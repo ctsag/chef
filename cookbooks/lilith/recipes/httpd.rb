@@ -15,7 +15,7 @@ template '/etc/httpd/conf.d/lilith.conf' do
 	source 'lilith.conf.erb'
 end
 
-template '/var/www/html/lilith.gr/public.html' do
+template '/var/www/html/lilith.gr/index.html' do
 	source 'index.html.erb'
 end
 
