@@ -17,6 +17,8 @@ end
 
 template '/var/www/html/lilith.gr/public_html/index.html' do
 	source 'index.html.erb'
+	owner 'ctsag'
+	group 'ctsag'
 end
 
 service 'httpd' do
