@@ -22,6 +22,6 @@ template '/var/www/html/lilith.gr/public_html/index.html' do
 end
 
 service 'httpd' do
-	action [:enable, :start]
+	action [:enable, :restart]
 end
 
