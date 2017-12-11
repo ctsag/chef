@@ -7,13 +7,6 @@ directory '/var/www/html/lilith.gr/public_html' do
 	action :create
 end
 
-directory '/var/www/html/lilith.gr/log' do
-	owner 'ctsag'
-	group 'apache'
-	mode '0775'
-	action :create
-end
-
 template '/etc/httpd/conf/httpd.conf' do
 	source 'httpd.conf.erb'
 end
