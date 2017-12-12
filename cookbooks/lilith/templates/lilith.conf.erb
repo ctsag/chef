@@ -6,6 +6,12 @@
 	DocumentRoot /srv/www/ls-blog/public
 	DirectoryIndex index.html
 
+	<Directory /srv/www/ls-blog/public>
+		Options -Indexes
+		AllowOverride All
+		Require all granted
+	</Directory>
+
 	LogLevel warn
 	ErrorLog /srv/www/ls-blog/logs/error.log
 	CustomLog /srv/www/ls-blog/logs/access.log combined
