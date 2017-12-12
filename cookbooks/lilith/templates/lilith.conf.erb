@@ -1,12 +1,12 @@
 <VirtualHost *:80>
 	ServerAdmin chrtsago@yahoo.gr
-	ServerName www.lilith.gr
+	ServerName blog.lilith.gr
 	ServerAlias lilith.gr
 
-	DocumentRoot /var/www/html/lilith.gr/public_html
+	DocumentRoot /srv/www/ls-blog/public
 	DirectoryIndex index.html
 
 	LogLevel warn
-	ErrorLog /var/www/html/lilith.gr/logs/lilith-gr-error.log
-	CustomLog /var/www/html/lilith.gr/logs/lilith-gr-access.log combined
+	ErrorLog /srv/www/ls-blog/logs/error.log
+	CustomLog /srv/www/ls-blog/logs/access.log combined
 </VirtualHost>

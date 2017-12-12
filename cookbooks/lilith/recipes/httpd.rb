@@ -11,7 +11,14 @@ directory '/srv/www' do
 	action :create
 end
 
+directory '/srv/www/default' do
+	owner 'root'
+	group 'root'
+	mode '755'
+	action :create
+end
+
 service 'httpd' do
-	action [:enable, :restart]
+	action [:enable, :start]
 end
 
