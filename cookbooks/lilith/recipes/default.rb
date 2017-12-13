@@ -1,4 +1,5 @@
 package 'git'
+package 'vim'
 package 'wget'
 package 'yum-utils'
 package 'bash-completion'
@@ -13,10 +14,15 @@ end
 
 execute 'selinux_disable' do
 	command 'setenforce 0'
+	returns [0,1]
 end
 
 cookbook_file '/etc/firewalld/zones/public.xml' do
 	source 'firewalld_public.xml'
+end
+
+cookbook_file '/etc/hosts' do
+	source 'hosts'
 end
 
 service 'firewalld' do
