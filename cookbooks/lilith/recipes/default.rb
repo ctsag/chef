@@ -13,3 +13,7 @@ end
 service 'firewalld' do
 	action :restart
 end
+
+service 'postfix' do
+	action [:stop, :disable]
+end
