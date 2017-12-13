@@ -1,7 +1,7 @@
 package 'httpd'
 
-template '/etc/httpd/conf/httpd.conf' do
-	source 'httpd.conf.erb'
+cookbook_file '/etc/httpd/conf/httpd.conf' do
+	source 'httpd.conf'
 end
 
 directory '/srv/www' do

@@ -19,14 +19,14 @@ directory '/srv/www/ls-blog/public' do
 	action :create
 end
 
-template '/srv/www/ls-blog/public/index.html' do
-	source 'index.html.erb'
+cookbook_file '/srv/www/ls-blog/public/index.html' do
+	source 'ls-blog_index.html'
 	owner 'ctsag'
 	group 'ctsag'
 end
 
-template '/etc/httpd/conf.d/lilith.conf' do
-	source 'lilith.conf.erb'
+cookbook_file '/etc/httpd/conf.d/lilith.conf' do
+	source 'lilith.conf'
 end
 
 service 'httpd' do
