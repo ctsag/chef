@@ -25,8 +25,8 @@ cookbook_file '/srv/www/ls-blog/public/index.html' do
 	group 'ctsag'
 end
 
-cookbook_file '/etc/httpd/conf.d/lilith.conf' do
-	source 'lilith.conf'
+cookbook_file '/etc/httpd/conf.d/nothingness.conf' do
+	source 'nothingness.conf'
 end
 
 service 'httpd' do
