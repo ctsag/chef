@@ -28,3 +28,18 @@ cookbook_file '/home/ctsag/.vimrc' do
 	source 'home_vimrc'
 end
 
+cookbook_file '/root/.bashrc' do
+	source 'home_bashrc'
+end
+
+cookbook_file '/root/.inputrc' do
+	source 'home_inputrc'
+end
+
+cookbook_file '/root/.virc' do
+	source 'home_virc'
+end
+
+cookbook_file '/root/.vimrc' do
+	source 'home_vimrc'
+end
