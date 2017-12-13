@@ -1,0 +1,57 @@
+# make sure system wide inputrc is expanded, not replaced
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# soft replace vi with vim
+if [ -f /usr/bin/vim ] ; then
+	alias vi='/usr/bin/vim'
+fi
+
+# aliases
+alias ll='ls -l --color=auto'
+alias la='ls -la --color=auto'
+
+# history
+export HISTSIZE=100000
+
+# prompt
+readonly COLOR_OCHRE="\033[38;5;95m"
+readonly COLOR_CYAN="\033[0;36m"
+readonly COLOR_GREEN="\033[0;32m"
+readonly COLOR_YELLOW="\033[0;33m"
+readonly COLOR_WHITE="\033[1;97m"
+readonly COLOR_RESET="\033[0m"
+
+function getGitColor {
+	local _color="${COLOR_GREEN}"
+	local _branch
+	local _modified
+
+	_branch="`getGitBranch`"
+
+	if [ ! -z "${_branch}" ] ; then
+		_modified=`git status --porcelain`
+		if [ ! -z "${_modified}" ] ; then
+			_color="${COLOR_YELLOW}"
+		fi
+	fi
+	
+	echo -e "${_color}"
+}
+
+function getGitBranch {
+	local _branch
+
+	_branch=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
+
+	if [ ! -z "${_branch}" ] ; then
+		echo "(${_branch}) "
+	fi
+}
+
+PS1="\[$COLOR_OCHRE\]\u@\h "
+PS1+="\[\$(getGitColor)\]"
+PS1+="\$(getGitBranch)"
+PS1+="\[$COLOR_CYAN\][\w] "
+PS1+="\[$COLOR_WHITE\]\$\[$COLOR_RESET\] "

@@ -1,0 +1,5 @@
+# make sure system wide inputrc is expanded, not replaced
+$include /etc/inputrc
+
+# do not bell on tab-completion
+set bell-style none
