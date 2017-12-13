@@ -29,10 +29,6 @@ template '/etc/httpd/conf.d/lilith.conf' do
 	source 'lilith.conf.erb'
 end
 
-#execute 'selinux-logs' do
-#	command 'semanage fcontext -a -t httpd_log_t "/srv/www/ls-blog/logs(/.*)?" && restorecon -Rv /srv/www/ls-blog'
-#end
-
 service 'httpd' do
 	action :restart
 end

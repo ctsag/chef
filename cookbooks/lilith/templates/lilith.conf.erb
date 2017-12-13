@@ -7,7 +7,7 @@
 	DirectoryIndex index.html
 
 	<Directory /srv/www/ls-blog/public>
-		Options -Indexes +FollowSymLinks
+		Options -Indexes -Includes -ExecCGI +FollowSymLinks
 		AllowOverride All
 		Require all granted
 	</Directory>
