@@ -1,27 +1,24 @@
 package 'httpd'
 
-directory '/var/www/html/lilith.gr/public_html' do
-	owner 'ctsag'
-	group 'ctsag'
-	mode '0755'
+cookbook_file '/etc/httpd/conf/httpd.conf' do
+	source 'httpd.conf'
+end
+
+directory '/srv/www' do
+	owner 'root'
+	group 'root'
+	mode '755'
 	action :create
 end
 
-template '/etc/httpd/conf/httpd.conf' do
-	source 'httpd.conf.erb'
-end
-
-template '/etc/httpd/conf.d/lilith.conf' do
-	source 'lilith.conf.erb'
-end
-
-template '/var/www/html/lilith.gr/public_html/index.html' do
-	source 'index.html.erb'
-	owner 'ctsag'
-	group 'ctsag'
+directory '/srv/www/default' do
+	owner 'root'
+	group 'root'
+	mode '755'
+	action :create
 end
 
 service 'httpd' do
-	action [:enable, :restart]
+	action [:enable, :start]
 end
 
