@@ -21,10 +21,6 @@ cookbook_file '/etc/firewalld/zones/public.xml' do
 	source 'firewalld_public.xml'
 end
 
-cookbook_file '/etc/hosts' do
-	source 'hosts'
-end
-
 service 'firewalld' do
 	action :restart
 end
