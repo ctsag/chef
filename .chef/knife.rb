@@ -4,4 +4,4 @@ log_location              STDOUT
 node_name                 "chefadmin"
 client_key                "#{current_dir}/chefadmin.pem"
 chef_server_url           "https://proudhon.nothingness.gr/organizations/nothingness"
-cookbook_path             ["#{current_dir}/cookbooks"]
+cookbook_path             ["#{current_dir}/../cookbooks"]
