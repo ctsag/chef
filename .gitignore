@@ -23,3 +23,8 @@ Policyfile.lock.json
 
 # Chef Client
 nodes/*
+
+# Knife
+.chef/*.pem
+.chef/syntaxcache/*
+.chef/trusted_certs/*
