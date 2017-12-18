@@ -21,6 +21,10 @@ execute 'selinux_disable' do
 	returns [0,1]
 end
 
+execute 'timezone_Athens' do
+	command 'timedatectl set-timezone "Europe/Athens"'
+end
+
 cookbook_file '/etc/firewalld/zones/public.xml' do
 	source 'firewalld_public.xml'
 end
