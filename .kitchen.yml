@@ -1,0 +1,20 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: centos7-32bit
+    driver:
+        box: jasonc/centos7-32bit
+
+suites:
+  - name: default
+    run_list:
+      - recipe[nothingness::default]
+    attributes:
