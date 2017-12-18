@@ -11,6 +11,7 @@ fi
 # aliases
 alias ll='ls -l --color=auto'
 alias la='ls -la --color=auto'
+alias diff='colordiff'
 
 # history
 export HISTSIZE=100000
