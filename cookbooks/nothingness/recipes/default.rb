@@ -1,3 +1,4 @@
+package 'epel-release'
 package 'git'
 package 'vim'
 package 'wget'
@@ -7,6 +8,9 @@ package 'tree'
 package 'net-tools'
 package 'nmap'
 package 'bind-utils'
+package 'telnet'
+package 'strace'
+package 'colordiff'
 
 cookbook_file '/etc/selinux/config' do
 	source 'selinux_config'
