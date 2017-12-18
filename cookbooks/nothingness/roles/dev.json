@@ -10,7 +10,9 @@
 	"run_list": [
 		"recipe[nothingness::default]",
 		"recipe[nothingness::users]",
-		"recipe[nothingness::virtualization]",
+		"recipe[nothingness::virtualbox]",
+		"recipe[nothingness::vagrant]",
+		"recipe[nothingness::docker]",
 		"recipe[nothingness::httpd]",
 		"recipe[nothingness::ls-blog]"
 	],

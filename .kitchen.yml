@@ -17,4 +17,10 @@ suites:
   - name: default
     run_list:
       - recipe[nothingness::default]
+      - recipe[nothingness::users]
+      - recipe[nothingness::httpd]
+      - recipe[nothingness::ls-blog]
+      - recipe[nothingness::virtualbox]
+      - recipe[nothingness::vagrant]
+      - recipe[nothingness::docker]
     attributes:
