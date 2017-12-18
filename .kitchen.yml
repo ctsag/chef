@@ -9,9 +9,9 @@ verifier:
   name: inspec
 
 platforms:
-  - name: centos7-32bit
+  - name: centos-7.4
     driver:
-        box: jasonc/centos7-32bit
+        box: bento/centos-7.4
 
 suites:
   - name: default
