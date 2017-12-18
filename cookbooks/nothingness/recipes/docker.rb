@@ -3,8 +3,8 @@ include_recipe 'nothingness::virtualbox'
 
 yum_repository 'docker' do
 	description 'Docker yum repository'
-	baseurl 'https://download.docker.com/linux/centos/docker-ce.repo'
-	gpgkey 'https://download.docker.com/linux/ubuntu/gpg'
+	baseurl 'https://download.docker.com/linux/centos/7/$basearch/stable'
+	gpgkey 'https://download.docker.com/linux/centos/gpg'
 	action :create
 end
 
@@ -15,5 +15,5 @@ package 'docker'
 group 'docker' do
     members 'ctsag'
     append true
-    action :modify
+    action :create
 end
