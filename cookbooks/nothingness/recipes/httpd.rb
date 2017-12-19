@@ -7,14 +7,14 @@ end
 directory '/srv/www' do
 	owner 'root'
 	group 'root'
-	mode '755'
+	mode '0755'
 	action :create
 end
 
 directory '/srv/www/default' do
 	owner 'root'
 	group 'root'
-	mode '755'
+	mode '0755'
 	action :create
 end
 
