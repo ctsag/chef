@@ -18,19 +18,7 @@ suites:
   - name: default
     run_list:
       - recipe[nothingness::default]
-#     - recipe[nothingness::users]
-#     - recipe[nothingness::httpd]
-#     - recipe[nothingness::ls-blog]
-#     - recipe[nothingness::virtualbox]
-#     - recipe[nothingness::vagrant]
-#     - recipe[nothingness::docker]
     verifier:
       inspec_tests:
         - test/smoke/default
-#        - test/smoke/users
-#        - test/smoke/httpd
-#        - test/smoke/ls-blog
-#        - test/smoke/virtualbox
-#        - test/smoke/vagrant
-#        - test/smoke/docker
     attributes:
