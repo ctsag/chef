@@ -6,20 +6,17 @@ service 'docker' do
   action [:disable, :stop]
 end
 
-package 'docker' do
-  action :purge
-end
+packages = [
+  'docker',
+  'docker-common',
+  'docker-selinux',
+  'docker-engine',
+]
 
-package 'docker-common' do
-  action :purge
-end
-
-package 'docker-selinux' do
-  action :purge
-end
-
-package 'docker-engine' do
-  action :purge
+packages.each do |package_name|
+  package package_name do
+    action :purge
+  end
 end
 
 # Add the official docker repository

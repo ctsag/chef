@@ -1,25 +1,17 @@
-# Has the base directory for the ls-blog site been put in place?
-describe directory('/srv/www/ls-blog') do
-  it { should exist }
-  its('owner') { should eq 'ctsag' }
-  its('group') { should eq 'ctsag' }
-  its('mode') { should cmp '0755' }
-end
+# Has the directory structure for the ls-blog site been put in place?
+directories = [
+  '/srv/www/ls-blog',
+  '/srv/www/ls-blog/logs',
+  '/srv/www/ls-blog/public',
+]
 
-# Has the log directory for the ls-blog site been put in place?
-describe directory('/srv/www/ls-blog/logs') do
-  it { should exist }
-  its('owner') { should eq 'ctsag' }
-  its('group') { should eq 'ctsag' }
-  its('mode') { should cmp '0755' }
-end
-
-# Has the content directory for the ls-blog site been put in place?
-describe directory('/srv/www/ls-blog/public') do
-  it { should exist }
-  its('owner') { should eq 'ctsag' }
-  its('group') { should eq 'ctsag' }
-  its('mode') { should cmp '0755' }
+directories.each do |dir|
+  describe directory(dir) do
+    it { should exist }
+    its('owner') { should eq 'ctsag' }
+    its('group') { should eq 'ctsag' }
+    its('mode') { should cmp '0755' }
+  end
 end
 
 # Has the vhost configuration been put in place?
