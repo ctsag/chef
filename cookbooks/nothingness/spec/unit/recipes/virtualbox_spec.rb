@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'nothingness::default' do
+describe 'nothingness::virtualbox' do
   let(:chef_run) do
     runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '7.4.1708')
     runner.converge(described_recipe)
