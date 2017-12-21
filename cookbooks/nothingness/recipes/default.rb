@@ -34,6 +34,11 @@ execute 'timezone_Athens' do
 	command 'timedatectl set-timezone "Europe/Athens"'
 end
 
+# Start and enable the firewalld service
+service 'firewalld' do
+	action [:enable, :start]
+end
+
 # Stop the postfix service
 service 'postfix' do
 	action [:stop, :disable]

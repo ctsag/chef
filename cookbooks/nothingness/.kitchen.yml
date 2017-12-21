@@ -15,10 +15,44 @@ platforms:
       box: bento/centos-7.4
 
 suites:
-  - name: default
+  - name: dev
     run_list:
       - recipe[nothingness::default]
+      - recipe[nothingness::users]
+      - recipe[nothingness::httpd]
+      - recipe[nothingness::ls-blog]
+      - recipe[nothingness::virtualbox]
+      - recipe[nothingness::vagrant]
+      - recipe[nothingness::docker]
     verifier:
       inspec_tests:
         - test/smoke/default
+        - test/smoke/users
+        - test/smoke/httpd
+        - test/smoke/ls-blog
+        - test/smoke/virtualbox
+        - test/smoke/vagrant
+        - test/smoke/docker
+    attributes:
+  - name: admin
+    run_list:     
+      - recipe[nothingness::default]     
+      - recipe[nothingness::users]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+        - test/smoke/users
+    attributes:
+  - name: build_chain
+    run_list:
+      - recipe[nothingness::default]
+      - recipe[nothingness::users]
+      - recipe[nothingness::httpd]
+      - recipe[nothingness::ls-blog]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+        - test/smoke/users
+        - test/smoke/httpd
+        - test/smoke/ls-blog
     attributes:

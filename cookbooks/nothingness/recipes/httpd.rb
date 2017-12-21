@@ -1,3 +1,5 @@
+include_recipe 'nothingness::default'
+
 # Install the  httpd package
 package 'httpd'
 
@@ -14,6 +16,7 @@ directory '/srv/www' do
 	action :create
 end
 
+# Create the content directory for the default site
 directory '/srv/www/default' do
 	owner 'root'
 	group 'root'
@@ -21,8 +24,17 @@ directory '/srv/www/default' do
 	action :create
 end
 
+# Open up http port
+execute 'firewall_http' do
+	command 'firewall-cmd --add-port=80/tcp --permanent'
+end
+
+# Open up https port
+execute 'firewall_https' do
+	command 'firewall-cmd --add-port=443/tcp --permanent'
+end
+
 # Start and enable the httpd service
 service 'httpd' do
 	action [:enable, :start]
 end
-

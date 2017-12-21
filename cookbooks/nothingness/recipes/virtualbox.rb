@@ -7,9 +7,15 @@ yum_repository 'virtualbox' do
 end
 
 # Install VirtualBox and suggested packages
-package 'kernel-devel'
-package 'gcc'
-package 'VirtualBox-5.2'
+packages = [
+	'kernel-devel',
+	'gcc',
+	'VirtualBox-5.2'
+]
+
+packages.each do |package_name|
+	package(package_name)
+end
 
 # Rebuild and load the VirtualBox kernel module
 execute 'vbox_config' do

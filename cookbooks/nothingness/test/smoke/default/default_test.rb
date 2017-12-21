@@ -1,4 +1,4 @@
-# Are all the essential packages installed?
+# Have all the essential packages been installed?
 packages = [
 	'epel-release',
 	'git',
@@ -21,11 +21,24 @@ packages.each do |package_name|
 	end
 end
 
-# Is SELinux disabled?
+# Has SELinux been disabled?
+describe command('getenforce') do
+	its('stdout') { should_not cmp 'Enabled' }
+end
 
-# Is the timezone set to Athens, Greece?
+# Has the timezone been set to Athens, Greece?
+describe command('timedatectl | grep "Time zone:"') do
+	its('stdout') { should match /Europe\/Athens/ }
+end
 
-# Is the postfix service stopped and disabled?
+
+# Has the firewalld service been started and enabled?
+describe service('firewalld') do
+	it { should be_enabled }
+	it { should be_running }
+end
+
+# Has the postfix service been stopped and disabled?
 describe service('postfix') do
 	it { should_not be_enabled }
 	it { should_not be_running }
