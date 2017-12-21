@@ -21,22 +21,24 @@ describe user('ctsag') do
 end
 
 # Have the rc files been put in place?
-user_dirs = [
-	'/root/',
-	'/home/ctsag/'
-]
-
-rc_files = [
+files = [
 	'.bashrc',
 	'.inputrc',
 	'.virc',
 	'.vimrc'
 ]
 
-user_dirs.each do |user_dir|
-	rc_files.each do |rc_file|
-		describe file(user_dir + rc_file) do
+users = {
+	'root' => '/root/',
+	'ctsag' => '/home/ctsag/'
+}
+
+users.each do |user, home_dir|
+	files.each do |target_file|
+		describe file(home_dir + target_file) do
 			it { should exist }
+			its('owner') { should eq user }
+			its('group') { should eq user }			
 		end
 	end
 end
