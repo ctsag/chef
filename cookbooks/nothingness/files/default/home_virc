@@ -8,9 +8,13 @@ set shiftwidth=4
 set shiftround
 set smarttab
 set showmatch
+set expandtab
 
 set hlsearch
 set incsearch           
 set pastetoggle=<F2>
 
 set vb t_vb=
+
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
