@@ -1,3 +1,4 @@
+# Create the default user
 user 'ctsag' do
 	manage_home true
 	home '/home/ctsag'
@@ -6,40 +7,33 @@ user 'ctsag' do
 	action :create
 end
 
+# Add the default user to the wheel group
 group 'wheel' do
 	members 'ctsag'
 	append true
 	action :modify
 end
 
-cookbook_file '/home/ctsag/.bashrc' do
-	source 'home_bashrc'
-end
+# Put rc files in place
+user_dirs = [
+	'/root/',
+	'/home/ctsag/'
+]
 
-cookbook_file '/home/ctsag/.inputrc' do
-	source 'home_inputrc'
-end
+user_dirs.each do |user_dir|
+	cookbook_file user_dir + '.bashrc' do
+		source 'home_bashrc'
+	end
 
-cookbook_file '/home/ctsag/.virc' do
-	source 'home_virc'
-end
+	cookbook_file user_dir + '.inputrc' do
+		source 'home_inputrc'
+	end
 
-cookbook_file '/home/ctsag/.vimrc' do
-	source 'home_vimrc'
-end
+	cookbook_file user_dir + '.virc' do
+		source 'home_virc'
+	end
 
-cookbook_file '/root/.bashrc' do
-	source 'home_bashrc'
-end
-
-cookbook_file '/root/.inputrc' do
-	source 'home_inputrc'
-end
-
-cookbook_file '/root/.virc' do
-	source 'home_virc'
-end
-
-cookbook_file '/root/.vimrc' do
-	source 'home_vimrc'
+	cookbook_file user_dir + '.vimrc' do
+		source 'home_vimrc'
+	end
 end

@@ -1,18 +1,45 @@
-# # encoding: utf-8
+# Have all the essential packages been installed?
+packages = [
+	'epel-release',
+	'git',
+	'vim-enhanced',
+	'wget',
+	'yum-utils',
+	'bash-completion',
+	'tree',
+	'net-tools',
+	'nmap',
+	'bind-utils',
+	'telnet',
+	'strace',
+	'colordiff'
+]
 
-# Inspec test for recipe chef::default
-
-# The Inspec reference, with examples and extensive documentation, can be
-# found at http://inspec.io/docs/reference/resources/
-
-unless os.windows?
-  # This is an example test, replace with your own test.
-  describe user('root'), :skip do
-    it { should exist }
-  end
+packages.each do |package_name|
+	describe package(package_name) do
+		it { should be_installed }
+	end
 end
 
-# This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
+# Has SELinux been disabled?
+describe command('getenforce') do
+	its('stdout') { should_not cmp 'Enabled' }
+end
+
+# Has the timezone been set to Athens, Greece?
+describe command('timedatectl | grep "Time zone:"') do
+	its('stdout') { should match /Europe\/Athens/ }
+end
+
+
+# Has the firewalld service been started and enabled?
+describe service('firewalld') do
+	it { should be_enabled }
+	it { should be_running }
+end
+
+# Has the postfix service been stopped and disabled?
+describe service('postfix') do
+	it { should_not be_enabled }
+	it { should_not be_running }
 end

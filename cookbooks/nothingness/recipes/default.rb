@@ -1,17 +1,25 @@
-package 'epel-release'
-package 'git'
-package 'vim'
-package 'wget'
-package 'yum-utils'
-package 'bash-completion'
-package 'tree'
-package 'net-tools'
-package 'nmap'
-package 'bind-utils'
-package 'telnet'
-package 'strace'
-package 'colordiff'
+# Install essential packages
+packages = [
+	'epel-release',
+	'git',
+	'vim-enhanced',
+	'wget',
+	'yum-utils',
+	'bash-completion',
+	'tree',
+	'net-tools',
+	'nmap',
+	'bind-utils',
+	'telnet',
+	'strace',
+	'colordiff'
+]
 
+packages.each do |package_name|
+	package package_name
+end
+
+# Disable SELinux
 cookbook_file '/etc/selinux/config' do
 	source 'selinux_config'
 end
@@ -21,18 +29,17 @@ execute 'selinux_disable' do
 	returns [0,1]
 end
 
+# Set timezone to Athens, Greece
 execute 'timezone_Athens' do
 	command 'timedatectl set-timezone "Europe/Athens"'
 end
 
-cookbook_file '/etc/firewalld/zones/public.xml' do
-	source 'firewalld_public.xml'
-end
-
+# Start and enable the firewalld service
 service 'firewalld' do
-	action :restart
+	action [:enable, :start]
 end
 
+# Stop the postfix service
 service 'postfix' do
 	action [:stop, :disable]
 end
