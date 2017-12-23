@@ -1,3 +1,6 @@
+# Include the httpd recipe
+include_recipe 'nothingness::httpd'
+
 # Create the directory structure for the ls-blog site
 directories = [
   '/srv/www/ls-blog',

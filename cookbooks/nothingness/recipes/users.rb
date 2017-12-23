@@ -23,13 +23,13 @@ files = {
 }
 
 users = {
-  'root' => '/root/',
-  'ctsag' => '/home/ctsag/',
+  'root' => '/root',
+  'ctsag' => '/home/ctsag',
 }
 
 users.each do |user, home_dir|
   files.each do |source_file, target_file|
-    cookbook_file home_dir + target_file do
+    cookbook_file "#{home_dir}/#{target_file}" do
       source source_file
       owner user
       group user

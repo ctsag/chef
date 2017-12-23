@@ -1,4 +1,4 @@
-# Add the official VirtualBox repository
+# Create the official VirtualBox repository
 yum_repository 'virtualbox' do
   description 'VirtualBox yum repository'
   baseurl 'http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch'
