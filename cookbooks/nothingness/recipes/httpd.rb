@@ -1,3 +1,4 @@
+# Include the default recipe
 include_recipe 'nothingness::default'
 
 # Install the  httpd package
@@ -8,20 +9,19 @@ cookbook_file '/etc/httpd/conf/httpd.conf' do
   source 'httpd.conf'
 end
 
-# Create the httpd content directory
-directory '/srv/www' do
-  owner 'root'
-  group 'root'
-  mode '0755'
-  action :create
-end
+# Create the httpd content directory structure
+directories = [
+  '/srv/www',
+  '/srv/www/default',
+]
 
-# Create the content directory for the default site
-directory '/srv/www/default' do
-  owner 'root'
-  group 'root'
-  mode '0755'
-  action :create
+directories.each do |dir|
+  directory dir do
+    owner 'root'
+    group 'root'
+    mode '0755'
+    action :create
+  end
 end
 
 # Open up http port

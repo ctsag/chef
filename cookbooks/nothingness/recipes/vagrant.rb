@@ -1,3 +1,4 @@
+# Include the virtualbox recipe
 include_recipe 'nothingness::virtualbox'
 
 # Download and install Vagrant
@@ -11,6 +12,6 @@ package 'vagrant' do
 end
 
 # Delete the downloaded Vagrant artifact
-file "#{Chef::Config[:file_cache_path]}/vagrant_2.0.1_x86_64.rpm" do
+remote_file "#{Chef::Config[:file_cache_path]}/vagrant_2.0.1_x86_64.rpm" do
   action :delete
 end

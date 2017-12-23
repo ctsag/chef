@@ -1,7 +1,8 @@
+# Include the users and virtualbox recipes
 include_recipe 'nothingness::users'
 include_recipe 'nothingness::virtualbox'
 
-# Remove vanilla docker packages
+# Purge vanilla docker packages
 service 'docker' do
   action [:disable, :stop]
 end
@@ -19,7 +20,7 @@ packages.each do |package_name|
   end
 end
 
-# Add the official docker repository
+# Create the official docker repository
 yum_repository 'docker' do
   description 'Docker yum repository'
   baseurl 'https://download.docker.com/linux/centos/7/$basearch/stable'
@@ -27,10 +28,16 @@ yum_repository 'docker' do
   action :create
 end
 
-# Install docker-ce and suggested packages
-package 'device-mapper-persistent-data'
-package 'lvm2'
-package 'docker-ce'
+# Install Docker CE and suggested packages
+packages = [
+  'device-mapper-persistent-data',
+  'lvm2',
+  'docker-ce',
+]
+
+packages.each do |package_name|
+  package package_name
+end
 
 # Download and install docker-compose
 remote_file '/usr/local/bin/docker-compose' do
