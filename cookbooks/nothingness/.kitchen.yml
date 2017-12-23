@@ -26,13 +26,13 @@ suites:
       - recipe[nothingness::docker]
     verifier:
       inspec_tests:
-        - test/smoke/default
-        - test/smoke/users
-        - test/smoke/httpd
-        - test/smoke/ls-blog
-        - test/smoke/virtualbox
-        - test/smoke/vagrant
-        - test/smoke/docker
+        - test/integration/default
+        - test/integration/users
+        - test/integration/httpd
+        - test/integration/ls-blog
+        - test/integration/virtualbox
+        - test/integration/vagrant
+        - test/integration/docker
     attributes:
   - name: admin
     run_list:     
@@ -40,8 +40,8 @@ suites:
       - recipe[nothingness::users]
     verifier:
       inspec_tests:
-        - test/smoke/default
-        - test/smoke/users
+        - test/integration/default
+        - test/integration/users
     attributes:
   - name: build_chain
     run_list:
@@ -51,8 +51,8 @@ suites:
       - recipe[nothingness::ls-blog]
     verifier:
       inspec_tests:
-        - test/smoke/default
-        - test/smoke/users
-        - test/smoke/httpd
-        - test/smoke/ls-blog
+        - test/integration/default
+        - test/integration/users
+        - test/integration/httpd
+        - test/integration/ls-blog
     attributes:
