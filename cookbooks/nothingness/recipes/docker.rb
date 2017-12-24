@@ -7,7 +7,7 @@ service 'docker' do
   action [:disable, :stop]
 end
 
-node['packages']['docker']['purged'].each do |package_name|
+node['pkg']['docker']['purged'].each do |package_name|
   package package_name do
     action :purge
   end
@@ -22,7 +22,7 @@ yum_repository 'docker' do
 end
 
 # Install Docker CE and suggested packages
-node['packages']['docker']['installed'].each do |package_name|
+node['pkg']['docker']['installed'].each do |package_name|
   package package_name
 end
 

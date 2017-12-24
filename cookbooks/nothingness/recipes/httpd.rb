@@ -2,9 +2,7 @@
 include_recipe 'nothingness::default'
 
 # Install the httpd package
-node['packages']['httpd'].each do |package_name|
-  package package_name
-end
+package node['pkg']['httpd']
 
 # Put the httpd configuration in place
 cookbook_file '/etc/httpd/conf/httpd.conf' do
