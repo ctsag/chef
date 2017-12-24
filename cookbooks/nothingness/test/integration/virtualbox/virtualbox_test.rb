@@ -1,4 +1,4 @@
-# Has the VirtualBox yum repository been installed?
+# Has the official VirtualBox repository been installed?
 describe yum.repo('virtualbox') do
   it { should exist }
   it { should be_enabled }

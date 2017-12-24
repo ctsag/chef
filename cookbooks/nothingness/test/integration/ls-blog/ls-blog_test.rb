@@ -15,16 +15,16 @@ directories.each do |dir|
 end
 
 # Has the vhost configuration been put in place?
-describe file('/etc/httpd/conf.d/nothingness.conf') do
+describe file('/etc/httpd/conf.d/ls-blog.conf') do
   it { should exist }
 end
 
-# Is the httpd running?
+# Is the httpd service running?
 describe service('httpd') do
   it { should be_running }
 end
 
 # Has the demo page been put in place?
-describe command('curl localhost') do
+describe command('curl --resolve ls-blog.dev.nothignness.gr:127.0.0.1 http://ls-blog.dev.nothingness.gr') do
   its('stdout') { should match /Hello, nothingness!/ }
 end

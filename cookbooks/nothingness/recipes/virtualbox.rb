@@ -1,8 +1,8 @@
 # Create the official VirtualBox repository
 yum_repository 'virtualbox' do
   description 'VirtualBox yum repository'
-  baseurl node['repositories']['virtualbox']['baseurl']
-  gpgkey node['repositories']['virtualbox']['gpgkey']
+  baseurl node['repo']['virtualbox']['baseurl']
+  gpgkey node['repo']['virtualbox']['gpgkey']
   action :create
 end
 

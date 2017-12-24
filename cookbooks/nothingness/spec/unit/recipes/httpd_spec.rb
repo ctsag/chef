@@ -49,7 +49,7 @@ describe 'nothingness::httpd' do
     expect(chef_run).to run_execute('firewall-cmd --add-port=443/tcp --permanent')
   end
 
-  it 'starts and enables the httpd service' do
+  it 'enables and starts the httpd service' do
     expect(chef_run).to enable_service('httpd')
     expect(chef_run).to start_service('httpd')
   end

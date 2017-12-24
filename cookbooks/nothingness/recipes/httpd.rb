@@ -24,12 +24,12 @@ directories.each do |dir|
   end
 end
 
-# Open up http port
+# Open up the http port
 execute 'firewall_http' do
   command 'firewall-cmd --add-port=80/tcp --permanent'
 end
 
-# Open up https port
+# Open up the https port
 execute 'firewall_https' do
   command 'firewall-cmd --add-port=443/tcp --permanent'
 end

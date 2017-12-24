@@ -18,8 +18,8 @@ directories.each do |dir|
 end
 
 # Put the site's vhost configuration in place
-cookbook_file '/etc/httpd/conf.d/nothingness.conf' do
-  source 'nothingness.conf'
+cookbook_file '/etc/httpd/conf.d/ls-blog.conf' do
+  source 'vhost_ls-blog.conf'
 end
 
 # Restart the httpd service
