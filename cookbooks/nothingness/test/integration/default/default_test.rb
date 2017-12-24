@@ -13,6 +13,8 @@ packages = [
   'telnet',
   'strace',
   'colordiff',
+  'java-1.8.0-openjdk',
+  'ant',
 ]
 
 packages.each do |package_name|

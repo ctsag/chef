@@ -12,6 +12,8 @@ default['pkg']['essential'] = [
   'telnet',
   'strace',
   'colordiff',
+  'java-1.8.0-openjdk',
+  'ant',
 ]
 
 default['pkg']['docker']['installed'] = [
