@@ -7,14 +7,7 @@ service 'docker' do
   action [:disable, :stop]
 end
 
-packages = [
-  'docker',
-  'docker-common',
-  'docker-selinux',
-  'docker-engine',
-]
-
-packages.each do |package_name|
+node['packages']['docker']['purged'].each do |package_name|
   package package_name do
     action :purge
   end
@@ -23,19 +16,13 @@ end
 # Create the official docker repository
 yum_repository 'docker' do
   description 'Docker yum repository'
-  baseurl 'https://download.docker.com/linux/centos/7/$basearch/stable'
-  gpgkey 'https://download.docker.com/linux/centos/gpg'
+  baseurl node['repositories']['docker']['baseurl']
+  gpgkey node['repositories']['docker']['gpgkey']
   action :create
 end
 
 # Install Docker CE and suggested packages
-packages = [
-  'device-mapper-persistent-data',
-  'lvm2',
-  'docker-ce',
-]
-
-packages.each do |package_name|
+node['packages']['docker']['installed'].each do |package_name|
   package package_name
 end
 

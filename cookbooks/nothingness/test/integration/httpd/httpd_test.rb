@@ -1,6 +1,12 @@
 # Has the httpd package been installed?
-describe package('httpd') do
-  it { should be_installed }
+packages = [
+  'httpd',
+]
+
+packages.each do |package_name|
+  describe package(package_name) do
+    it { should be_installed }
+  end
 end
 
 # Has the httpd content directory been put in place?
