@@ -1,5 +1,5 @@
 # Install essential packages
-node['packages']['essential'].each do |package_name|
+node['pkg']['essential'].each do |package_name|
   package package_name
 end
 
