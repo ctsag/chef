@@ -16,8 +16,8 @@ end
 # Create the official docker repository
 yum_repository 'docker' do
   description 'Docker yum repository'
-  baseurl 'https://download.docker.com/linux/centos/7/$basearch/stable'
-  gpgkey 'https://download.docker.com/linux/centos/gpg'
+  baseurl node['repositories']['docker']['baseurl']
+  gpgkey node['repositories']['docker']['gpgkey']
   action :create
 end
 

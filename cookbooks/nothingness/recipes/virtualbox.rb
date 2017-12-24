@@ -1,8 +1,8 @@
 # Create the official VirtualBox repository
 yum_repository 'virtualbox' do
   description 'VirtualBox yum repository'
-  baseurl 'http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch'
-  gpgkey 'https://www.virtualbox.org/download/oracle_vbox.asc'
+  baseurl node['repositories']['virtualbox']['baseurl']
+  gpgkey node['repositories']['virtualbox']['gpgkey']
   action :create
 end
 
