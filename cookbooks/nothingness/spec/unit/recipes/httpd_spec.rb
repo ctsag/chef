@@ -17,7 +17,13 @@ describe 'nothingness::httpd' do
   end
 
   it 'installs the httpd package' do
-    expect(chef_run).to install_package('httpd')
+    packages = [
+      'httpd',
+    ]
+
+    packages.each do |package_name|
+      expect(chef_run).to install_package(package_name)
+    end
   end
 
   it 'puts the httpd configuration in place' do

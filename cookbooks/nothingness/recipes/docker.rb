@@ -7,14 +7,7 @@ service 'docker' do
   action [:disable, :stop]
 end
 
-packages = [
-  'docker',
-  'docker-common',
-  'docker-selinux',
-  'docker-engine',
-]
-
-packages.each do |package_name|
+node['packages']['docker']['purged'].each do |package_name|
   package package_name do
     action :purge
   end
@@ -29,13 +22,7 @@ yum_repository 'docker' do
 end
 
 # Install Docker CE and suggested packages
-packages = [
-  'device-mapper-persistent-data',
-  'lvm2',
-  'docker-ce',
-]
-
-packages.each do |package_name|
+node['packages']['docker']['installed'].each do |package_name|
   package package_name
 end
 

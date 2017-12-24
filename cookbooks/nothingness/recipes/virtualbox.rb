@@ -7,13 +7,7 @@ yum_repository 'virtualbox' do
 end
 
 # Install VirtualBox and suggested packages
-packages = [
-  'kernel-devel',
-  'gcc',
-  'VirtualBox-5.2',
-]
-
-packages.each do |package_name|
+node['packages']['virtualbox'].each do |package_name|
   package(package_name)
 end
 
