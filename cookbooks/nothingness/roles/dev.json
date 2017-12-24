@@ -11,11 +11,11 @@
 		"recipe[nothingness::default]",
 		"recipe[nothingness::users]",
 		"recipe[nothingness::httpd]",
-		"recipe[nothingness::jenkins]"
-		"recipe[nothingness::ls-blog]"
+		"recipe[nothingness::jenkins]",
+		"recipe[nothingness::ls-blog]",
 		"recipe[nothingness::virtualbox]",
 		"recipe[nothingness::vagrant]",
-		"recipe[nothingness::docker]",
+		"recipe[nothingness::docker]"
 	],
 	"env_run_lists": {
 	}
