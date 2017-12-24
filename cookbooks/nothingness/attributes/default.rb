@@ -1,0 +1,15 @@
+default['packages']['essential'] = [
+  'epel-release',
+  'git',
+  'vim-enhanced',
+  'wget',
+  'yum-utils',
+  'bash-completion',
+  'tree',
+  'net-tools',
+  'nmap',
+  'bind-utils',
+  'telnet',
+  'strace',
+  'colordiff',
+]

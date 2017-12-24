@@ -1,21 +1,5 @@
 # Install essential packages
-packages = [
-  'epel-release',
-  'git',
-  'vim-enhanced',
-  'wget',
-  'yum-utils',
-  'bash-completion',
-  'tree',
-  'net-tools',
-  'nmap',
-  'bind-utils',
-  'telnet',
-  'strace',
-  'colordiff',
-]
-
-packages.each do |package_name|
+node['packages']['essential'].each do |package_name|
   package package_name
 end
 
