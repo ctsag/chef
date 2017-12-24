@@ -1,5 +1,12 @@
 # Have the vanilla docker packages been removed?
-node['packages']['docker']['purged'].each do |package_name|
+packages = [
+  'docker',
+  'docker-common',
+  'docker-selinux',
+  'docker-engine',
+]
+
+packages.each do |package_name|
   describe package(package_name) do
     it { should_not be_installed }
   end
@@ -12,7 +19,13 @@ describe yum.repo('docker') do
 end
 
 # Have all the necessary packages been installed?
-node['packages']['docker']['installed'].each do |package_name|
+packages = [
+  'device-mapper-persistent-data',
+  'lvm2',
+  'docker-ce',
+]
+
+packages.each do |package_name|
   describe package(package_name) do
     it { should be_installed }
   end

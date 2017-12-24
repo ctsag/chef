@@ -1,5 +1,21 @@
 # Have all the essential packages been installed?
-node['packages']['essential'].each do |package_name|
+packages = [
+  'epel-release',
+  'git',
+  'vim-enhanced',
+  'wget',
+  'yum-utils',
+  'bash-completion',
+  'tree',
+  'net-tools',
+  'nmap',
+  'bind-utils',
+  'telnet',
+  'strace',
+  'colordiff',
+]
+
+packages.each do |package_name|
   describe package(package_name) do
     it { should be_installed }
   end

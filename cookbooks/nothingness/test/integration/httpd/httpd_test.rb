@@ -1,5 +1,9 @@
 # Has the httpd package been installed?
-node['packages']['httpd'].each do |package_name|
+packages = [
+  'httpd',
+]
+
+packages.each do |package_name|
   describe package(package_name) do
     it { should be_installed }
   end

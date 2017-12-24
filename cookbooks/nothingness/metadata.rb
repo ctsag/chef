@@ -3,7 +3,7 @@ maintainer 'Christos Tsagkournis'
 maintainer_email 'chrtsago@yahoo.gr'
 license 'GPL-3.0'
 description 'Installs/Configures chef'
-version '0.11.0'
+version '0.12.0'
 
 issues_url 'https://github.com/ctsag/chef/issues'
 source_url 'https://github.com/ctsag/chef'

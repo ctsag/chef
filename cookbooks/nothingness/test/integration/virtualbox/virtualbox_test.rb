@@ -5,7 +5,13 @@ describe yum.repo('virtualbox') do
 end
 
 # Have all the necessary packages been installed?
-node['packages']['virtualbox'].each do |package_name|
+packages = [
+  'kernel-devel',
+  'gcc',
+  'VirtualBox-5.2',
+]
+
+packages.each do |package_name|
   describe package(package_name) do
     it { should be_installed }
   end
