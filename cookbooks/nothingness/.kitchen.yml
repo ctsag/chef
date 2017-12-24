@@ -20,6 +20,7 @@ suites:
       - recipe[nothingness::default]
       - recipe[nothingness::users]
       - recipe[nothingness::httpd]
+      - recipe[nothingness::jenkins]
       - recipe[nothingness::ls-blog]
       - recipe[nothingness::virtualbox]
       - recipe[nothingness::vagrant]
@@ -29,6 +30,7 @@ suites:
         - test/integration/default
         - test/integration/users
         - test/integration/httpd
+        - test/integration/jenkins
         - test/integration/ls-blog
         - test/integration/virtualbox
         - test/integration/vagrant

@@ -39,3 +39,5 @@ default['pkg']['virtualbox'] = [
   'gcc',
   'VirtualBox-5.2',
 ]
+
+default['pkg']['jenkins'] = 'jenkins'

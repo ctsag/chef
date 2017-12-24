@@ -16,8 +16,8 @@ end
 # Create the official docker repository
 yum_repository 'docker' do
   description 'Docker yum repository'
-  baseurl node['repositories']['docker']['baseurl']
-  gpgkey node['repositories']['docker']['gpgkey']
+  baseurl node['repo']['docker']['baseurl']
+  gpgkey node['repo']['docker']['gpgkey']
   action :create
 end
 

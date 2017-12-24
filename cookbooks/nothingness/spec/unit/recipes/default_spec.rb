@@ -43,12 +43,12 @@ describe 'nothingness::default' do
     expect(chef_run).to run_execute('timedatectl set-timezone "Europe/Athens"')
   end
 
-  it 'starts and enables the firewalld service' do
+  it 'enables and starts the firewalld service' do
     expect(chef_run).to enable_service('firewalld')
     expect(chef_run).to start_service('firewalld')
   end
 
-  it 'stops the postfix service' do
+  it 'stops and disables the postfix service' do
     expect(chef_run).to stop_service('postfix')
     expect(chef_run).to disable_service('postfix')
   end
