@@ -28,8 +28,8 @@ describe 'nothingness::jenkins' do
   end
 
   it "puts the site's vhost configuration in place" do
-    expect(chef_run).to create_cookbook_file('/etc/httpd/conf.d/jenkins.conf').with(
-      source: 'vhost_jenkins.conf'
+    expect(chef_run).to create_template('/etc/httpd/conf.d/jenkins.conf').with(
+      source: 'vhost_jenkins.conf.erb'
     )
   end
 

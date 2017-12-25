@@ -36,6 +36,7 @@ suites:
         - test/integration/vagrant
         - test/integration/docker
     attributes:
+      host_context: ".dev"
   - name: admin
     run_list:     
       - recipe[nothingness::default]     
@@ -45,6 +46,7 @@ suites:
         - test/integration/default
         - test/integration/users
     attributes:
+      host_context: ""
   - name: build_chain
     run_list:
       - recipe[nothingness::default]
@@ -58,3 +60,4 @@ suites:
         - test/integration/httpd
         - test/integration/ls-blog
     attributes:
+      host_context: ""

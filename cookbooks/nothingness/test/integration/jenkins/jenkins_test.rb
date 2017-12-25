@@ -31,6 +31,6 @@ describe service('httpd') do
 end
 
 # Is the vhost working?
-describe command('curl --resolve jenkins.dev.nothignness.gr:127.0.0.1 http://jenkins.dev.nothingness.gr') do
+describe command("curl --resolve jenkins#{node['host_context']}.nothignness.gr:127.0.0.1 http://jenkins#{node['host_context']}.nothingness.gr") do
   its('stdout') { should match /hudson.model/ }
 end

@@ -33,8 +33,8 @@ describe 'nothingness::ls-blog' do
   end
 
   it "puts the site's vhost configuration in place" do
-    expect(chef_run).to create_cookbook_file('/etc/httpd/conf.d/ls-blog.conf').with(
-      source: 'vhost_ls-blog.conf'
+    expect(chef_run).to create_template('/etc/httpd/conf.d/ls-blog.conf').with(
+      source: 'vhost_ls-blog.conf.erb'
     )
   end
 
