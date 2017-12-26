@@ -6,7 +6,7 @@
   "json_class": "Chef::Environment",
   "chef_type": "environment",
   "default_attributes": {
-    "host_context": "stage"
+    "host_context": ".stage"
   },
   "override_attributes": {
   }
