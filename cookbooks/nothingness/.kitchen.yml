@@ -41,10 +41,15 @@ suites:
     run_list:     
       - recipe[nothingness::default]     
       - recipe[nothingness::users]
+      - recipe[nothingness::httpd]
+      - recipe[nothingness::jenkins]
+      - recipe[export-node::default]
     verifier:
       inspec_tests:
         - test/integration/default
         - test/integration/users
+        - test/integration/httpd
+        - test/integration/jenkins
     attributes:
       host_context: ""
   - name: build_chain

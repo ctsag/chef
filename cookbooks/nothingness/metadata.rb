@@ -10,4 +10,6 @@ source_url 'https://github.com/ctsag/chef'
 
 supports 'centos'
 
+depends 'export-node'
+
 chef_version '>= 12.1' if respond_to?(:chef_version)

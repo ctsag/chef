@@ -1,3 +1,7 @@
+# Export node attributes
+require 'json'
+node = json('/tmp/kitchen/chef_node.json')
+
 # Has the directory structure for the ls-blog site been put in place?
 directories = [
   '/srv/www/ls-blog',

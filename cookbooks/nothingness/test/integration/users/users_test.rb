@@ -1,3 +1,7 @@
+# Export node attributes
+require 'json'
+node = json('/tmp/kitchen/chef_node.json')
+
 # Has the default user been created?
 describe user('ctsag') do
   it { should exist }

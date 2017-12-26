@@ -1,3 +1,7 @@
+# Export node attributes
+require 'json'
+node = json('/tmp/kitchen/chef_node.json')
+
 # Has the httpd package been installed?
 describe package('httpd') do
   it { should be_installed }
