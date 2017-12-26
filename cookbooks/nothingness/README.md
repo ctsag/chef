@@ -15,11 +15,13 @@ yum install https://packages.chef.io/files/stable/chef-server/12.17.15/el/7/chef
 When working on a local Chef Server with no resolvable public static IP, we need to add this to the file /etc/opscode/chef-server.rb :
 
 ```ruby
-server_name = "proudhon.nothingness.gr"
-api_fqdn = "nothingness.zapto.org"
+server_name = 'proudhon.nothingness.gr'
+api_fqdn = 'nothingness.zapto.org'
 bookshelf['vip'] = server_name
 nginx['url'] = "https://#{server_name}"
 nginx['server_name'] = server_name
+nginx['ssl_port'] = '449'
+nginx['non_ssl_port'] = '450'
 lb['fqdn'] = api_fqdn
 ```
 
