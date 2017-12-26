@@ -9,9 +9,7 @@
   "chef_type": "role",
   "run_list": [
     "recipe[nothingness::default]",
-    "recipe[nothingness::users]",
-    "recipe[nothingness::httpd]",
-    "recipe[nothingness::jenkins]"
+    "recipe[nothingness::users]"
   ],
   "env_run_lists": {
   }
