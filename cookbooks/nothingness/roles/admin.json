@@ -1,16 +1,18 @@
 {
-	"name": "admin",
-	"description": "Administration role",
-	"json_class": "Chef::role",
-	"default_attributes": {
-	},
-	"override_attributes": {
-	},
-	"chef_type": "role",
-	"run_list": [
-		"recipe[nothingness::default]",
-		"recipe[nothingness::users]"
-	],
-	"env_run_lists": {
-	}
+  "name": "admin",
+  "description": "Administration role",
+  "json_class": "Chef::role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[nothingness::default]",
+    "recipe[nothingness::users]",
+    "recipe[nothingness::httpd]",
+    "recipe[nothingness::jenkins]"
+  ],
+  "env_run_lists": {
+  }
 }

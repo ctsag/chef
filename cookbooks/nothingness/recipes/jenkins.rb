@@ -20,8 +20,8 @@ execute 'firewall_jenkins' do
 end
 
 # Put the site's vhost configuration in place
-cookbook_file '/etc/httpd/conf.d/jenkins.conf' do
-  source 'vhost_jenkins.conf'
+template '/etc/httpd/conf.d/jenkins.conf' do
+  source 'vhost_jenkins.conf.erb'
 end
 
 # Restart the httpd service

@@ -18,3 +18,4 @@ set vb t_vb=
 
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
+autocmd BufEnter *.json :setlocal filetype=yaml

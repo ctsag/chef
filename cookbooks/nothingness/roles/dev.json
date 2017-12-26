@@ -1,22 +1,22 @@
 {
-	"name": "dev",
-	"description": "Development role",
-	"json_class": "Chef::role",
-	"default_attributes": {
-	},
-	"override_attributes": {
-	},
-	"chef_type": "role",
-	"run_list": [
-		"recipe[nothingness::default]",
-		"recipe[nothingness::users]",
-		"recipe[nothingness::httpd]",
-		"recipe[nothingness::jenkins]",
-		"recipe[nothingness::ls-blog]",
-		"recipe[nothingness::virtualbox]",
-		"recipe[nothingness::vagrant]",
-		"recipe[nothingness::docker]"
-	],
-	"env_run_lists": {
-	}
+  "name": "dev",
+  "description": "Development role",
+  "json_class": "Chef::role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[nothingness::default]",
+    "recipe[nothingness::users]",
+    "recipe[nothingness::httpd]",
+    "recipe[nothingness::jenkins]",
+    "recipe[nothingness::ls-blog]",
+    "recipe[nothingness::virtualbox]",
+    "recipe[nothingness::vagrant]",
+    "recipe[nothingness::docker]"
+  ],
+  "env_run_lists": {
+  }
 }

@@ -1,6 +1,6 @@
 <VirtualHost *:80>
 	ServerAdmin chrtsago@yahoo.gr
-	ServerName ls-blog.dev.nothingness.gr
+	ServerName ls-blog<%= node['host_context'] %>.nothingness.gr
 	ServerAlias nothingness.gr
 
 	DocumentRoot /srv/www/ls-blog/public

@@ -1,3 +1,7 @@
+# Export node attributes
+require 'json'
+node = json('/tmp/kitchen/chef_node.json')
+
 # Has the directory structure for the ls-blog site been put in place?
 directories = [
   '/srv/www/ls-blog',
@@ -25,6 +29,6 @@ describe service('httpd') do
 end
 
 # Has the demo page been put in place?
-describe command('curl --resolve ls-blog.dev.nothignness.gr:127.0.0.1 http://ls-blog.dev.nothingness.gr') do
+describe command("curl --resolve ls-blog#{node['host_context']}.nothignness.gr:127.0.0.1 http://ls-blog#{node['host_context']}.nothingness.gr") do
   its('stdout') { should match /Hello, nothingness!/ }
 end

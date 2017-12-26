@@ -1,3 +1,7 @@
+# Export node attributes
+require 'json'
+node = json('/tmp/kitchen/chef_node.json')
+
 # Have the vanilla docker packages been removed?
 packages = [
   'docker',
