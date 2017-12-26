@@ -1,0 +1,8 @@
+<VirtualHost *:80>
+	ServerAdmin chrtsago@yahoo.gr
+	ServerName chef.nothingness.gr
+	ServerAlias nothingness.gr
+
+    ProxyPass "/" "https://localhost:449/"
+    ProxyPassReverse "/" "https://localhost:449/"
+</VirtualHost>
