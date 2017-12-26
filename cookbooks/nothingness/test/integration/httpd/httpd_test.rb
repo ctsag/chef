@@ -3,7 +3,7 @@ require 'json'
 node = json('/tmp/kitchen/chef_node.json')
 
 # Has the httpd package been installed?
-describe package('httpd') do
+describe package(node['default']['pkg']['httpd']) do
   it { should be_installed }
 end
 

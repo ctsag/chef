@@ -3,14 +3,7 @@ require 'json'
 node = json('/tmp/kitchen/chef_node.json')
 
 # Have the vanilla docker packages been removed?
-packages = [
-  'docker',
-  'docker-common',
-  'docker-selinux',
-  'docker-engine',
-]
-
-packages.each do |package_name|
+node['default']['pkg']['docker']['purged'].each do |package_name|
   describe package(package_name) do
     it { should_not be_installed }
   end
@@ -23,13 +16,7 @@ describe yum.repo('docker') do
 end
 
 # Have all the necessary packages been installed?
-packages = [
-  'device-mapper-persistent-data',
-  'lvm2',
-  'docker-ce',
-]
-
-packages.each do |package_name|
+node['default']['pkg']['docker']['installed'].each do |package_name|
   describe package(package_name) do
     it { should be_installed }
   end

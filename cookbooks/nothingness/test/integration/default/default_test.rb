@@ -3,25 +3,7 @@ require 'json'
 node = json('/tmp/kitchen/chef_node.json')
 
 # Have all the essential packages been installed?
-packages = [
-  'epel-release',
-  'git',
-  'vim-enhanced',
-  'wget',
-  'yum-utils',
-  'bash-completion',
-  'tree',
-  'net-tools',
-  'nmap',
-  'bind-utils',
-  'telnet',
-  'strace',
-  'colordiff',
-  'java-1.8.0-openjdk',
-  'ant',
-]
-
-packages.each do |package_name|
+node['default']['pkg']['essential'].each do |package_name|
   describe package(package_name) do
     it { should be_installed }
   end

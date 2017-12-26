@@ -3,7 +3,7 @@ require 'json'
 node = json('/tmp/kitchen/chef_node.json')
 
 # Has the necessary package been installed?
-describe package('vagrant') do
+describe package(node['default']['pkg']['vagrant']['name']) do
   it { should be_installed }
 end
 
