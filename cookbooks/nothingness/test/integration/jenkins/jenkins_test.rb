@@ -9,7 +9,7 @@ describe yum.repo('jenkins') do
 end
 
 # Has the Jenkins package been installed?
-describe package('jenkins') do
+describe package(node['default']['pkg']['jenkins']) do
   it { should be_installed }
 end
 

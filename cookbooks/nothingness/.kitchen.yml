@@ -25,6 +25,7 @@ suites:
       - recipe[nothingness::virtualbox]
       - recipe[nothingness::vagrant]
       - recipe[nothingness::docker]
+      - recipe[export-node::default]
     verifier:
       inspec_tests:
         - test/integration/default
@@ -58,6 +59,7 @@ suites:
       - recipe[nothingness::users]
       - recipe[nothingness::httpd]
       - recipe[nothingness::ls-blog]
+      - recipe[export-node::default]
     verifier:
       inspec_tests:
         - test/integration/default
