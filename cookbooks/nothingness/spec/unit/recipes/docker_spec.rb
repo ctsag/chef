@@ -9,13 +9,6 @@ describe 'nothingness::docker' do
   before do
     allow_any_instance_of(Chef::Recipe).to receive(:include_recipe).and_call_original
     allow_any_instance_of(Chef::Recipe).to receive(:include_recipe).with('nothingness::users')
-    allow_any_instance_of(Chef::Recipe).to receive(:include_recipe).with('nothingness::virtualbox')
-  end
-
-  it 'includes the users and virtualbox recipes' do
-    expect_any_instance_of(Chef::Recipe).to receive(:include_recipe).with('nothingness::users')
-    expect_any_instance_of(Chef::Recipe).to receive(:include_recipe).with('nothingness::virtualbox')
-    chef_run
   end
 
   it 'purges vanilla docker packages' do

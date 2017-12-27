@@ -1,6 +1,5 @@
 # Include the users and virtualbox recipes
 include_recipe 'nothingness::users'
-include_recipe 'nothingness::virtualbox'
 
 # Purge vanilla docker packages
 service 'docker' do
