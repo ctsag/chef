@@ -6,6 +6,16 @@ describe 'nothingness::jenkins' do
     runner.converge(described_recipe)
   end
 
+  before do
+    allow_any_instance_of(Chef::Recipe).to receive(:include_recipe).and_call_original
+    allow_any_instance_of(Chef::Recipe).to receive(:include_recipe).with('nothingness::docker')
+  end
+
+  it 'includes the httpd recipe' do
+    expect_any_instance_of(Chef::Recipe).to receive(:include_recipe).with('nothingness::docker')
+    chef_run
+  end
+
   it 'creates the Jenkins yum repository' do
     expect(chef_run).to create_yum_repository('jenkins').with(
       description: 'Jenkins yum repository',
@@ -30,6 +40,13 @@ describe 'nothingness::jenkins' do
   it "puts the site's vhost configuration in place" do
     expect(chef_run).to create_template('/etc/httpd/conf.d/jenkins.conf').with(
       source: 'vhost_jenkins.conf.erb'
+    )
+  end
+
+  it 'adds the jenkins user to the docker group' do
+    expect(chef_run).to modify_group('docker').with(
+      members: ['jenkins'],
+      append: true
     )
   end
 

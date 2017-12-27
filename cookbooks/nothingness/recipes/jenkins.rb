@@ -1,3 +1,6 @@
+# Include the docker recipe
+include_recipe 'nothingness::docker'
+
 # Create the official Jenkins repository
 yum_repository 'jenkins' do
   description 'Jenkins yum repository'
@@ -22,6 +25,13 @@ end
 # Put the site's vhost configuration in place
 template '/etc/httpd/conf.d/jenkins.conf' do
   source 'vhost_jenkins.conf.erb'
+end
+
+# Add the jenkins user to the docker group
+group 'docker' do
+  members 'jenkins'
+  append true
+  action :modify
 end
 
 # Restart the httpd service
