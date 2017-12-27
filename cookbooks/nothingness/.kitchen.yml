@@ -44,6 +44,7 @@ suites:
       - recipe[nothingness::users]
       - recipe[nothingness::httpd]
       - recipe[nothingness::jenkins]
+      - recipe[nothingness::docker]
       - recipe[export-node::default]
     verifier:
       inspec_tests:
@@ -51,6 +52,7 @@ suites:
         - test/integration/users
         - test/integration/httpd
         - test/integration/jenkins
+        - test/integration/docker
     attributes:
       host_context: ""
   - name: build_chain
