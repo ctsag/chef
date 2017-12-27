@@ -15,12 +15,14 @@ yum install https://packages.chef.io/files/stable/chef-server/12.17.15/el/7/chef
 When working on a local Chef Server with no resolvable public static IP, we need to add this to the file /etc/opscode/chef-server.rb :
 
 ```ruby
-server_name = "proudhon.nothingness.gr"
-api_fqdn = "nothingness.zapto.org"
-bookshelf['vip'] = server_name
-nginx['url'] = "https://#{server_name}"
-nginx['server_name'] = server_name
-lb['fqdn'] = api_fqdn
+nginx['server_name'] = "proudhon.nothingness.gr"
+lb['api_fqdn'] = "proudhon.nothingness.gr"
+nginx['url'] = "https://proudhon.nothingness.gr"
+nginx['enable_non_ssl'] = true
+nginx['ssl_port'] = 4443
+nginx['non_ssl_port'] = 4444
+bookshelf['url'] = "https://proudhon.nothingness.gr"
+bookshelf['vip_port'] = 4443
 ```
 
 And now we're free to configure our server
@@ -49,6 +51,8 @@ Last thing in line for the server, open up the http and https ports
 ```bash
 firewall-cmd --add-port=80/tcp --permanent
 firewall-cmd --add-port=443/tcp --permanent
+firewall-cmd --add-port=4443/tcp --permanent
+firewall-cmd --add-port=4444/tcp --permanent
 systemctl restart firewalld
 ```
 
@@ -74,14 +78,13 @@ knife ssl check
 
 # Bootstrapping nodes
 
-Now, begin by uploading berks dependencies
+Now, begin by installing (but not uploading) cookbooks used for local testing
 
 ```bash
 berks install
-berks upload --no-freeze
 ```
 
-Then, upload the coobooks
+Then, upload the coobook
 
 ```bash
 knife cookbook upload nothingness
