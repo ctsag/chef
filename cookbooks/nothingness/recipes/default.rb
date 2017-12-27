@@ -18,6 +18,11 @@ execute 'timezone_Athens' do
   command 'timedatectl set-timezone "Europe/Athens"'
 end
 
+# Put the maven profile in place
+cookbook_file '/etc/profile.d/maven.sh' do
+  source 'maven.sh'
+end
+
 # Start and enable the firewalld service
 service 'firewalld' do
   action [:enable, :start]
