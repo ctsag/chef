@@ -20,6 +20,11 @@ describe command('timedatectl | grep "Time zone:"') do
   its('stdout') { should match timezone }
 end
 
+# Has the maven profile been put in place?
+describe file('/etc/profile.d/maven.sh') do
+  it { should exist }
+end
+
 # Has the firewalld service been started and enabled?
 describe service('firewalld') do
   it { should be_enabled }

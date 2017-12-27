@@ -14,6 +14,7 @@ default['pkg']['essential'] = [
   'colordiff',
   'java-1.8.0-openjdk',
   'ant',
+  'maven',
 ]
 
 default['pkg']['docker']['installed'] = [
@@ -29,8 +30,6 @@ default['pkg']['docker']['purged'] = [
   'docker-engine',
 ]
 
-default['pkg']['httpd'] = 'httpd'
-
 default['pkg']['vagrant']['name'] = 'vagrant'
 default['pkg']['vagrant']['source'] = 'https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.rpm'
 
@@ -40,4 +39,5 @@ default['pkg']['virtualbox'] = [
   'VirtualBox-5.2',
 ]
 
+default['pkg']['httpd'] = 'httpd'
 default['pkg']['jenkins'] = 'jenkins'
