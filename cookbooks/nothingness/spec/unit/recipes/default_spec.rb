@@ -44,12 +44,6 @@ describe 'nothingness::default' do
     expect(chef_run).to run_execute('timedatectl set-timezone "Europe/Athens"')
   end
 
-  it 'puts the maven profile in place' do
-    expect(chef_run).to create_cookbook_file('/etc/profile.d/maven.sh').with(
-      source: 'maven.sh'
-    )
-  end
-
   it 'enables and starts the firewalld service' do
     expect(chef_run).to enable_service('firewalld')
     expect(chef_run).to start_service('firewalld')

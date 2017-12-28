@@ -29,6 +29,11 @@ describe file('/etc/httpd/conf.d/jenkins.conf') do
   it { should exist }
 end
 
+# Has the jenkins user been added to the docker group?
+describe user('jenkins') do
+  its('groups') { should include 'docker' }
+end
+
 # Is the httpd service running?
 describe service('httpd') do
   it { should be_running }
