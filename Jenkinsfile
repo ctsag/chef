@@ -1,11 +1,12 @@
 pipeline {
     agent any
 
+    dir('cookbook/nothingness')
+
     stages {
         stage('Lint Tests') {
             steps {
-                echo 'cookstyle .'
-                echo 'foodcritic .'
+                sh 'pwd'
             }
         }
         stage('Unit Tests') {
