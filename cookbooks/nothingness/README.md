@@ -102,6 +102,19 @@ Create environments
 knife environment from file environments/*
 ```
 
+All knife SSH communications need to occur via SSH keys, so let's do this now. If you don't have a public key, create one now :
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "ctsag@decleyre"
+```
+
+And now copy this key to all the nodes for the root user and, optionally, for the non-root user as well
+
+```bash
+ssh-copy-id ctsag@proudhon
+ssh copy-id root@proudhon
+```
+
 Now, finally bootstrap a node
 
 ```bash

@@ -19,6 +19,7 @@ suites:
     run_list:
       - recipe[nothingness::default]
       - recipe[nothingness::users]
+      - recipe[nothingness::security]
       - recipe[nothingness::httpd]
       - recipe[nothingness::jenkins]
       - recipe[nothingness::ls-blog]
@@ -30,6 +31,7 @@ suites:
       inspec_tests:
         - test/integration/default
         - test/integration/users
+        - test/integration/security
         - test/integration/httpd
         - test/integration/jenkins
         - test/integration/ls-blog
@@ -42,6 +44,7 @@ suites:
     run_list:     
       - recipe[nothingness::default]     
       - recipe[nothingness::users]
+      - recipe[nothingness::security]
       - recipe[nothingness::httpd]
       - recipe[nothingness::jenkins]
       - recipe[nothingness::docker]
@@ -50,6 +53,7 @@ suites:
       inspec_tests:
         - test/integration/default
         - test/integration/users
+        - test/integration/security
         - test/integration/httpd
         - test/integration/jenkins
         - test/integration/docker
@@ -59,6 +63,7 @@ suites:
     run_list:
       - recipe[nothingness::default]
       - recipe[nothingness::users]
+      - recipe[nothingness::security]
       - recipe[nothingness::httpd]
       - recipe[nothingness::ls-blog]
       - recipe[export-node::default]
@@ -66,6 +71,7 @@ suites:
       inspec_tests:
         - test/integration/default
         - test/integration/users
+        - test/integration/security
         - test/integration/httpd
         - test/integration/ls-blog
     attributes:
