@@ -20,7 +20,7 @@ pipeline {
             parallel {
                 stage('rspec') {
                     steps {
-                        sh 'chef exec rspec -f d cookbooks/nothingness/spec/unit/recipes/*'
+                        sh 'cd cookbooks/nothingness ; chef exec rspec -f d spec/unit/recipes/*'
                     }
                 }
             }
