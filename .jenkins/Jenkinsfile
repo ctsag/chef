@@ -17,8 +17,10 @@ pipeline {
             }
         }
         stage('Unit Tests') {
-            steps {
-                echo 'chef exec rspec -f d spec/unit/recipes/*'
+            stage('rspec') {
+                steps {
+                    sh 'chef exec rspec -f d cookbook/nothingness/spec/unit/recipes/*'
+                }
             }
         }
     }
