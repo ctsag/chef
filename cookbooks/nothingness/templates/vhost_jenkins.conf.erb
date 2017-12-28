@@ -3,6 +3,7 @@
 	ServerName jenkins<%= node['host_context'] %>.nothingness.gr
 	ServerAlias nothingness.gr
 
-    ProxyPass "/" "http://localhost:8080/"
+    ProxyPass "/" "http://localhost:8080/" nocanon
     ProxyPassReverse "/" "http://localhost:8080/"
+    AllowEncodedSlashes NoDecode
 </VirtualHost>
