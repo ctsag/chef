@@ -3,10 +3,16 @@ pipeline {
 
     stages {
         stage('Lint Tests') {
-            steps {
-                dir('cookbook/nothingness') {
-                    sh 'cookstyle .'
-                    sh 'foodcritic .'
+            parallel {
+                stage('cookstyle') {
+                    steps {
+                        sh 'cookstyle cookbooks/nothingness/'
+                    }
+                }
+                stage('foodcritic') {
+                    steps {
+                        sh 'foodcritic cookbooks/nothingness/'
+                    }
                 }
             }
         }
