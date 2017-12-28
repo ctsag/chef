@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Lint Tests') {
             steps {
-                dir('cookbook/nothingness')
+                dir('cookbook/nothingness') {
                     sh 'pwd'
                 }
             }
