@@ -10,6 +10,7 @@
   "run_list": [
     "recipe[nothingness::default]",
     "recipe[nothingness::users]",
+    "recipe[nothingness::security]",
     "recipe[nothingness::httpd]",
     "recipe[nothingness::jenkins]",
     "recipe[nothingness::ls-blog]",

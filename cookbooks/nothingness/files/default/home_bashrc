@@ -15,6 +15,7 @@ alias diff='colordiff'
 
 # history
 export HISTSIZE=100000
+export HISTTIMEFORMAT="%d/%m/%y %T "
 
 # prompt
 readonly COLOR_OCHRE="\033[38;5;95m"
