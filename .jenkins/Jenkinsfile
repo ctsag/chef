@@ -5,7 +5,8 @@ pipeline {
         stage('Lint Tests') {
             steps {
                 dir('cookbook/nothingness') {
-                    sh 'pwd'
+                    sh 'cookstyle .'
+                    sh 'foodcritic .'
                 }
             }
         }
