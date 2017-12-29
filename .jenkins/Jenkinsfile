@@ -1,29 +1,33 @@
 pipeline {
-    agent any
+  agent any
 
-    stages {
-        stage('Lint Tests') {
-            parallel {
-                stage('cookstyle') {
-                    steps {
-                        sh 'cookstyle cookbooks/nothingness/'
-                    }
-                }
-                stage('foodcritic') {
-                    steps {
-                        sh 'foodcritic cookbooks/nothingness/'
-                    }
-                }
-            }
+  def cookbookDir = 'cookbooks/nothingness/'
+
+  stages {
+    stage('Lint Tests') {
+      parallel {
+        stage('cookstyle') {
+          steps {
+            sh 'cookstyle -DES -f h ${cookbookDir} > cookstyle_report.html'
+          }
         }
-        stage('Unit Tests') {
-            parallel {
-                stage('rspec') {
-                    steps {
-                        sh 'cd cookbooks/nothingness ; chef exec rspec -f d spec/unit/recipes/*'
-                    }
-                }
-            }
+        stage('foodcritic') {
+          steps {
+            sh 'foodcritic ${cookbookDir}'
+          }
         }
+      }
     }
+    stage('Unit Tests') {
+      parallel {
+        stage('rspec') {
+          steps {
+            dir(cookbookDir) {
+              sh 'chef exec rspec -f d spec/unit/recipes/*'
+            }
+          }
+        }
+      }
+    }
+  }
 }
