@@ -12,7 +12,6 @@ pipeline {
         stage('cookstyle') {
           steps {
             sh 'cookstyle -DES ${cookbookDir}'
-            sh 'echo ${reportDir}'
           }
         }
         stage('foodcritic') {
