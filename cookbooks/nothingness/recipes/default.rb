@@ -18,6 +18,16 @@ execute 'timezone_Athens' do
   command 'timedatectl set-timezone "Europe/Athens"'
 end
 
+# Set the global user full name for git
+execute 'git_full_name' do
+  command 'git config --global user.name "Christos Tsagkournis"'
+end
+
+# Set the global user email for git
+execute 'git_email' do
+  command 'git config --global user.email "chrtsago@yahoo.gr"'
+end
+
 # Start and enable the firewalld service
 service 'firewalld' do
   action [:enable, :start]

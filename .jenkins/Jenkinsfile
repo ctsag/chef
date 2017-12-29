@@ -3,7 +3,6 @@ pipeline {
 
   environment {
     cookbookDir = 'cookbooks/nothingness'
-    reportDir = 'reports'
   }
 
   stages {
@@ -11,17 +10,7 @@ pipeline {
       parallel {
         stage('cookstyle') {
           steps {
-            sh 'mkdir ${reportDir}'
-            sh 'cookstyle -DES -f h ${cookbookDir} > ${reportDir}/cookstyle.html'
-            publishHTML([
-              allowMissing: false,
-              alwaysLinkToLastBuild: true,
-              keepAll: true,
-              reportDir: 'reports',
-              reportFiles: 'cookstyle.html',
-              reportName: 'Cookstyle Report',
-              reportTitles: ''
-            ])
+            sh 'cookstyle -DES ${cookbookDir}'
           }
         }
         stage('foodcritic') {
@@ -41,12 +30,6 @@ pipeline {
           }
         }
       }
-    }    
-  }
-
-  post {
-    always {
-      cleanWs()
     }
   }
 }
