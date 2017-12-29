@@ -44,6 +44,14 @@ describe 'nothingness::default' do
     expect(chef_run).to run_execute('timedatectl set-timezone "Europe/Athens"')
   end
 
+  it 'sets the global user full name for git' do
+    expect(chef_run).to run_execute('git config --global user.name "Christos Tsagkournis"')
+  end
+
+  it 'sets the global user email for git' do
+    expect(chef_run).to run_execute('git config --global user.email "chrtsago@yahoo.gr"')
+  end
+
   it 'enables and starts the firewalld service' do
     expect(chef_run).to enable_service('firewalld')
     expect(chef_run).to start_service('firewalld')
