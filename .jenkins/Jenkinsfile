@@ -1,11 +1,11 @@
 pipeline {
   agent any
 
+  environment {
+    cookbookDir = 'cookbooks/nothingness/'
+  }
 
   stages {
-
-    def cookbookDir = 'cookbooks/nothingness/'
-
     stage('Lint Tests') {
       parallel {
         stage('cookstyle') {
