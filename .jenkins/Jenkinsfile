@@ -2,7 +2,8 @@ pipeline {
   agent any
 
   environment {
-    cookbookDir = 'cookbooks/nothingness/'
+    cookbookDir = 'cookbooks/nothingness'
+    reportDir = 'reports'
   }
 
   stages {
@@ -10,7 +11,8 @@ pipeline {
       parallel {
         stage('cookstyle') {
           steps {
-            sh 'cookstyle -DES -f h ${cookbookDir} > cookstyle_report.html'
+            sh 'mkdir ${reportDir}'
+            sh 'cookstyle -DES -f h ${cookbookDir} > ${reportDir}/cookstyle_report.html'
           }
         }
         stage('foodcritic') {
