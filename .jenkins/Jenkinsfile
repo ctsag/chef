@@ -15,8 +15,8 @@ pipeline {
             sh 'cookstyle -DES -f h ${cookbookDir} > ${reportDir}/cookstyle.html'
             publishHTML([
               allowMissing: false,
-              alwaysLinkToLastBuild: false,
-              keepAll: false,
+              alwaysLinkToLastBuild: true,
+              keepAll: true,
               reportDir: 'reports',
               reportFiles: 'cookstyle.html',
               reportName: 'Cookstyle Report',
@@ -46,9 +46,7 @@ pipeline {
 
   post {
     always {
-      dir(reportDir) {
-        deleteDir()
-      }
+      cleanWs()
     }
   }
 }
