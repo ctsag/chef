@@ -23,7 +23,7 @@ files = {
 }
 
 users = {
-  'root' => "/root",
+  'root' => '/root',
   'ctsag' => '/home/ctsag',
 }
 
