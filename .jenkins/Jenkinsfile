@@ -41,6 +41,12 @@ pipeline {
           }
         }
       }
+    }    
+  }
+
+  post {
+    dir(reportDir) {
+      deleteDir()
     }
   }
 }
