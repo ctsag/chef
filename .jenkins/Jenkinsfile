@@ -3,7 +3,6 @@ pipeline {
 
   environment {
     cookbookDir = 'cookbooks/nothingness'
-    reportDir = 'reports'
   }
 
   stages {
@@ -11,7 +10,6 @@ pipeline {
       parallel {
         stage('cookstyle') {
           steps {
-            sh 'cookstyle -DES ${cookbookDir}'
             sh 'cookstyle -DES ${cookbookDir}'
           }
         }
