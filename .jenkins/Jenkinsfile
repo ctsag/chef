@@ -12,13 +12,13 @@ pipeline {
         stage('cookstyle') {
           steps {
             sh 'mkdir ${reportDir}'
-            sh 'cookstyle -DES -f h ${cookbookDir} > ${reportDir}/cookstyle_report.html'
+            sh 'cookstyle -DES -f h ${cookbookDir} > ${reportDir}/cookstyle.html'
             publishHTML([
               allowMissing: false,
               alwaysLinkToLastBuild: false,
               keepAll: false,
               reportDir: 'reports',
-              reportFiles: 'cookstyle_report.html',
+              reportFiles: 'cookstyle.html',
               reportName: 'Cookstyle Report',
               reportTitles: ''
             ])
