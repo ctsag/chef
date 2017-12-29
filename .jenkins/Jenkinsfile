@@ -1,0 +1,37 @@
+pipeline {
+  agent any
+
+  environment {
+    cookbookDir = 'cookbooks/nothingness'
+    reportDir = 'reports'
+  }
+
+  stages {
+    stage('Lint Tests') {
+      parallel {
+        stage('cookstyle') {
+          steps {
+            sh 'cookstyle -DES ${cookbookDir}'
+            sh 'echo ${reportDir}'
+          }
+        }
+        stage('foodcritic') {
+          steps {
+            sh 'foodcritic ${cookbookDir}'
+          }
+        }
+      }
+    }
+    stage('Unit Tests') {
+      parallel {
+        stage('rspec') {
+          steps {
+            dir(cookbookDir) {
+              sh 'chef exec rspec -f d spec/unit/recipes/*'
+            }
+          }
+        }
+      }
+    }
+  }
+}
