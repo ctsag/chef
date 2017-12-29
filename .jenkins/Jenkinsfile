@@ -13,6 +13,15 @@ pipeline {
           steps {
             sh 'mkdir ${reportDir}'
             sh 'cookstyle -DES -f h ${cookbookDir} > ${reportDir}/cookstyle_report.html'
+            publishHTML([
+              allowMissing: false,
+              alwaysLinkToLastBuild: false,
+              keepAll: false,
+              reportDir: 'reports',
+              reportFiles: 'cookstyle_report.html',
+              reportName: 'Cookstyle Report',
+              reportTitles: ''
+            ])
           }
         }
         stage('foodcritic') {
