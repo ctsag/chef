@@ -45,8 +45,10 @@ pipeline {
   }
 
   post {
-    dir(reportDir) {
-      deleteDir()
+    always {
+      dir(reportDir) {
+        deleteDir()
+      }
     }
   }
 }
