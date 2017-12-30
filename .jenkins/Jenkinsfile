@@ -65,6 +65,9 @@ pipeline {
         branch 'master'
       }
       steps {
+        sh 'cp ${JENKINS_HOME}/.chef/chefadmin.pem .chef/'
+        sh 'knife ssl fetch'
+        sh 'knife ssl check'
         sh 'knife cookbook upload nothingness'
       }
     }
@@ -76,12 +79,12 @@ pipeline {
       parallel {
         stage('Dev') {
           steps {
-            sh 'knife ssh "role:dev" "chef-client" --ssh-user root'
+            sh 'knife ssh -e "role:dev" "chef-client" --ssh-user root'
           }
         }
         stage('Admin') {
           steps {
-            sh 'knife ssh "role:admin" "chef-client" --ssh-user root'
+            sh 'knife ssh -e "role:admin" "chef-client" --ssh-user root'
           }
         }
       }

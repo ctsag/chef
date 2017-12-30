@@ -28,6 +28,11 @@ execute 'git_email' do
   command 'git config --global user.email "chrtsago@yahoo.gr"'
 end
 
+# Set the global color setting for git
+execute 'git_color' do
+  command 'git config --global color.ui auto'
+end
+
 # Start and enable the firewalld service
 service 'firewalld' do
   action [:enable, :start]
