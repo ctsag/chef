@@ -47,6 +47,8 @@ suites:
       - recipe[nothingness::security]
       - recipe[nothingness::httpd]
       - recipe[nothingness::jenkins]
+      - recipe[nothingness::virtualbox]
+      - recipe[nothingness::vagrant]
       - recipe[nothingness::docker]
       - recipe[export-node::default]
     verifier:
@@ -56,6 +58,8 @@ suites:
         - test/integration/security
         - test/integration/httpd
         - test/integration/jenkins
+        - test/integration/virtualbox
+        - test/integration/vagrant
         - test/integration/docker
     attributes:
       host_context: ""
