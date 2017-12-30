@@ -22,19 +22,23 @@ pipeline {
       }
     }
     stage('Unit Tests') {
-      stage('rspec') {
-        steps {
-          dir(cookbookDir) {
-            sh 'chef exec rspec -f d spec/unit/recipes/*'
+      parallel {
+        stage('rspec') {
+          steps {
+            dir(cookbookDir) {
+              sh 'chef exec rspec -f d spec/unit/recipes/*'
+            }
           }
         }
       }
     }
     stage('Integration Tests') {
-      stage('rspec') {
-        steps {
-          dir(cookbookDir) {
-            sh 'kitchen verify dev'
+      parallel {
+        stage('rspec') {
+          steps {
+            dir(cookbookDir) {
+              sh 'kitchen verify dev'
+            }
           }
         }
       }
