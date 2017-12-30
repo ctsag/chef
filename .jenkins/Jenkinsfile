@@ -8,7 +8,13 @@ pipeline {
   }
 
   stages {
+
     stage('Lint Tests') {
+      when {
+        not {
+          branch 'master'
+        }
+      }
       parallel {
         stage('CookStyle') {
           steps {
@@ -22,7 +28,13 @@ pipeline {
         }
       }
     }
+
     stage('Unit Tests') {
+      when {
+        not {
+          branch 'master'
+        }
+      }
       parallel {
         stage('RSpec') {
           steps {
@@ -33,6 +45,7 @@ pipeline {
         }
       }
     }
+
     stage('Integration Tests') {
       when {
         allOf {
@@ -40,16 +53,40 @@ pipeline {
           environment name: 'CHANGE_TARGET', value: 'master'
         }
       }
+      steps {
+        dir(cookbookDir) {
+          sh 'kitchen verify dev'
+        }
+      }
+    }
+
+    stage('Upload cookbook') {
+      when {
+        branch 'master'
+      }
+      steps {
+        sh 'knife cookbook upload nothingness'
+      }
+    }
+
+    stage('Deploy Admin and Dev') {
+      when {
+        branch 'master'
+      }
       parallel {
-        stage('Kitchen CI') {
+        stage('Dev') {
           steps {
-            dir(cookbookDir) {
-              sh 'kitchen verify dev'
-            }
+            sh 'knife ssh "role:dev" "chef-client" --ssh-user root'
+          }
+        }
+        stage('Admin') {
+          steps {
+            sh 'knife ssh "role:admin" "chef-client" --ssh-user root'
           }
         }
       }
     }
+
   }
 
   post {
