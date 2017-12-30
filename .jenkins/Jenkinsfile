@@ -9,12 +9,12 @@ pipeline {
   stages {
     stage('Lint Tests') {
       parallel {
-        stage('cookstyle') {
+        stage('CookStyle') {
           steps {
             sh 'cookstyle -DES ${cookbookDir}'
           }
         }
-        stage('foodcritic') {
+        stage('Foodcritic') {
           steps {
             sh 'foodcritic ${cookbookDir}'
           }
@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Unit Tests') {
       parallel {
-        stage('rspec') {
+        stage('RSpec') {
           steps {
             dir(cookbookDir) {
               sh 'chef exec rspec -f d spec/unit/recipes/*'
@@ -34,7 +34,7 @@ pipeline {
     }
     stage('Integration Tests') {
       parallel {
-        stage('rspec') {
+        stage('Kitchen CI') {
           steps {
             dir(cookbookDir) {
               sh 'kitchen verify dev'
