@@ -6,6 +6,12 @@ First, update all yum repositories
 yum update
 ```
 
+Start by installing the Chef Development Kit
+
+```bash
+yum install https://packages.chef.io/files/stable/chefdk/2.4.17/el/7/chefdk-2.4.17-1.el7.x86_64.rpm
+```
+
 Then, install the Chef Server rpm detailed in https://downloads.chef.io/chef-server, e.g.
 
 ```bash
