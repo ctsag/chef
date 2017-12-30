@@ -35,13 +35,9 @@ pipeline {
           branch 'master'
         }
       }
-      parallel {
-        stage('RSpec') {
-          steps {
-            dir(cookbookDir) {
-              sh 'chef exec rspec -f d spec/unit/recipes/*'
-            }
-          }
+      steps {
+        dir(cookbookDir) {
+          sh 'chef exec rspec -f d spec/unit/recipes/*'
         }
       }
     }
