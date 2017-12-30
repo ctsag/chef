@@ -4,6 +4,7 @@ pipeline {
 
   environment {
     cookbookDir = 'cookbooks/nothingness'
+    branchType = env.GIT_BRANCH.substring(0, 2)
   }
 
   stages {
@@ -34,7 +35,10 @@ pipeline {
     }
     stage('Integration Tests') {
       when {
-        environment name: 'GITHUB_PR_TARGET_BRANCH', value: 'master'
+        allOf {
+          environment name: 'branchType', value: 'PR';
+          environment name: 'CHANGE_TARGET', value: 'master'
+        }
       }
       parallel {
         stage('Kitchen CI') {
