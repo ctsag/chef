@@ -21,13 +21,15 @@ describe command('timedatectl | grep "Time zone:"') do
 end
 
 # Has the global user full name for git been set?
+git_name = %r{Christos Tsagkournis}
 describe command('git config --get user.name') do
-  its('stdout') { should cmp 'Christos Tsagkournis' }
+  its('stdout') { should match git_name }
 end
 
 # Has the global user email for git been set?
+git_email = %r{chrtsago@yahoo.gr}
 describe command('git config --get user.email') do
-  its('stdout') { should cmp 'chrtsago@yahoo.gr' }
+  its('stdout') { should match git_email }
 end
 
 # Has the firewalld service been started and enabled?
