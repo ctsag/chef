@@ -1,4 +1,5 @@
 pipeline {
+
   agent any
 
   environment {
@@ -6,6 +7,7 @@ pipeline {
   }
 
   stages {
+
     stage('Lint Tests') {
       parallel {
         stage('cookstyle') {
@@ -20,16 +22,35 @@ pipeline {
         }
       }
     }
+
     stage('Unit Tests') {
-      parallel {
-        stage('rspec') {
-          steps {
-            dir(cookbookDir) {
-              sh 'chef exec rspec -f d spec/unit/recipes/*'
-            }
+      stage('rspec') {
+        steps {
+          dir(cookbookDir) {
+            sh 'chef exec rspec -f d spec/unit/recipes/*'
           }
         }
       }
     }
+
+    stage('Integration Tests') {
+      stage('rspec') {
+        steps {
+          dir(cookbookDir) {
+            sh 'kitchen verify dev'
+          }
+        }
+      }
+    }
+
   }
+
+  post {
+    always {
+      dir(cookbookDir) {
+        sh 'kitchen destroy'
+      }
+    }
+  }
+
 }
