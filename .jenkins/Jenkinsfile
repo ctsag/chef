@@ -33,6 +33,9 @@ pipeline {
       }
     }
     stage('Integration Tests') {
+      when {
+        environment name: 'GITHUB_PR_TARGET_BRANCH', value: 'master'
+      }
       parallel {
         stage('Kitchen CI') {
           steps {

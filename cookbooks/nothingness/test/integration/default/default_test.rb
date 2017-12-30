@@ -27,7 +27,7 @@ end
 
 # Has the global user email for git been set?
 describe command('git config --get user.email') do
-  its('stdout') { should match /chrtsao@yahoo.gr/ }
+  its('stdout') { should match /chrtsago@yahoo.gr/ }
 end
 
 # Has the firewalld service been started and enabled?
