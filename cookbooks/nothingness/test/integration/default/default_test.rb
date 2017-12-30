@@ -30,6 +30,11 @@ describe command('git config --get user.email') do
   its('stdout') { should match /chrtsago@yahoo.gr/ }
 end
 
+# Has the global color setting for git been set?
+describe command('git config --get color.ui') do
+  its('stdout') { should match /auto/ }
+end
+
 # Has the firewalld service been started and enabled?
 describe service('firewalld') do
   it { should be_enabled }
