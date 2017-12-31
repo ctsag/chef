@@ -25,8 +25,4 @@ describe 'nothingness::vagrant' do
   it 'installs the Vagrant rpm' do
     expect(chef_run).to install_package('vagrant')
   end
-
-  it 'deletes the Vagrant rpm' do
-    expect(chef_run).to delete_remote_file("#{Chef::Config[:file_cache_path]}/vagrant.rpm")
-  end
 end

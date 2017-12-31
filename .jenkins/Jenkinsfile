@@ -56,7 +56,7 @@ pipeline {
       }
     }
 
-    stage('Upload cookbook') {
+    stage('Upload Chef data') {
       when {
         branch 'master'
       }
@@ -65,22 +65,46 @@ pipeline {
         sh 'knife ssl fetch'
         sh 'knife ssl check'
         sh 'knife cookbook upload nothingness'
+        sh 'knife role from file ${cookbookDir}/roles/*'
+        sh 'knife environment from file ${cookbookDir}/environment/*'
       }
     }
 
-    stage('Deploy Admin and Dev') {
+    stage('Admin and Dev Deployment') {
       when {
         branch 'master'
       }
       parallel {
-        stage('Dev') {
+        stage('Admin Deployment') {
+          steps {
+            sh 'knife ssh -e "role:admin" "chef-client" --ssh-user root'
+          }
+        }
+        stage('Dev Deployment') {
           steps {
             sh 'knife ssh -e "role:dev" "chef-client" --ssh-user root'
           }
         }
-        stage('Admin') {
+      }
+    }
+
+    stage('Admin and Dev Acceptance Tests') {
+      when {
+        branch 'master'
+      }
+      parallel {
+        stage('Admin Acceptance Tests') {
           steps {
-            sh 'knife ssh -e "role:admin" "chef-client" --ssh-user root'
+            dir(cookbookDir) {
+              sh './inspec_env.sh admin'
+            }
+          }
+        }
+        stage('Dev Acceptance Tests') {
+          steps {
+            dir(cookbookDir) {
+              sh './inspec_env.sh dev'
+            }
           }
         }
       }

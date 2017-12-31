@@ -9,8 +9,3 @@ end
 package node['pkg']['vagrant']['name'] do
   source "#{Chef::Config[:file_cache_path]}/#{node['pkg']['vagrant']['name']}.rpm"
 end
-
-# Delete the downloaded Vagrant artifact
-remote_file "#{Chef::Config[:file_cache_path]}/#{node['pkg']['vagrant']['name']}.rpm" do
-  action :delete
-end

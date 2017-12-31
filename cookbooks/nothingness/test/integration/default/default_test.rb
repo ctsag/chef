@@ -1,6 +1,6 @@
 # Export node attributes
 require 'json'
-node = json('/tmp/kitchen/chef_node.json')
+node = json('/run/chef_node.json')
 
 # Have all the essential packages been installed?
 node['default']['pkg']['essential'].each do |package_name|
