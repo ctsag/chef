@@ -89,6 +89,9 @@ pipeline {
     }
 
     stage('Admin and Dev Acceptance Tests') {
+      when {
+        branch 'master'
+      }
       parallel {
         stage('Admin Acceptance Tests') {
           steps {
