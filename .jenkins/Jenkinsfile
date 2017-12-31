@@ -70,19 +70,38 @@ pipeline {
       }
     }
 
-    stage('Deploy Admin and Dev') {
+    stage('Admin and Dev Deployment') {
       when {
         branch 'master'
       }
       parallel {
-        stage('Dev') {
+        stage('Admin Deployment') {
+          steps {
+            sh 'knife ssh -e "role:admin" "chef-client" --ssh-user root'
+          }
+        }
+        stage('Dev Deployment') {
           steps {
             sh 'knife ssh -e "role:dev" "chef-client" --ssh-user root'
           }
         }
-        stage('Admin') {
+      }
+    }
+
+    stage('Admin and Dev Acceptance Tests') {
+      parallel {
+        stage('Admin Acceptance Tests') {
           steps {
-            sh 'knife ssh -e "role:admin" "chef-client" --ssh-user root'
+            dir(cookbookDir) {
+              sh './inspec-tests.sh admin'
+            }
+          }
+        }
+        stage('Dev Acceptance Tests') {
+          steps {
+            dir(cookbookDir) {
+              sh './inspec-tests.sh dev'
+            }
           }
         }
       }
