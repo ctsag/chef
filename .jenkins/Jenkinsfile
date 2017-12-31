@@ -56,7 +56,7 @@ pipeline {
       }
     }
 
-    stage('Upload cookbook') {
+    stage('Upload Chef data') {
       when {
         branch 'master'
       }
@@ -65,6 +65,8 @@ pipeline {
         sh 'knife ssl fetch'
         sh 'knife ssl check'
         sh 'knife cookbook upload nothingness'
+        sh 'knife role from file ${cookbookDir}/roles/*'
+        sh 'knife environment from file ${cookbookDir}/environment/*'
       }
     }
 

@@ -16,7 +16,8 @@
     "recipe[nothingness::ls-blog]",
     "recipe[nothingness::virtualbox]",
     "recipe[nothingness::vagrant]",
-    "recipe[nothingness::docker]"
+    "recipe[nothingness::docker]",
+    "recipe[nothingness::export-attributes]"
   ],
   "env_run_lists": {
   }

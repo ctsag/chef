@@ -12,7 +12,8 @@
     "recipe[nothingness::users]",
     "recipe[nothingness::security]",
     "recipe[nothingness::httpd]",
-    "recipe[nothingness::ls-blog]"
+    "recipe[nothingness::ls-blog]",
+    "recipe[nothingness::export-attributes]"
   ],
   "env_run_lists": {
   }
