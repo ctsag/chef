@@ -66,7 +66,7 @@ pipeline {
         sh 'knife ssl check'
         sh 'knife cookbook upload nothingness'
         sh 'knife role from file ${cookbookDir}/roles/*'
-        sh 'knife environment from file ${cookbookDir}/environment/*'
+        sh 'knife environment from file ${cookbookDir}/environments/*'
       }
     }
 
