@@ -93,14 +93,14 @@ pipeline {
         stage('Admin Acceptance Tests') {
           steps {
             dir(cookbookDir) {
-              sh './inspec-tests.sh admin'
+              sh './inspec_env.sh admin'
             }
           }
         }
         stage('Dev Acceptance Tests') {
           steps {
             dir(cookbookDir) {
-              sh './inspec-tests.sh dev'
+              sh './inspec_env.sh dev'
             }
           }
         }
