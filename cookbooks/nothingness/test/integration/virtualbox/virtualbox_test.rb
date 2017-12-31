@@ -1,6 +1,6 @@
 # Export node attributes
 require 'json'
-node = json('/var/chef/chef_node.json')
+node = json('/run/chef_node.json')
 
 # Has the official VirtualBox repository been installed?
 describe yum.repo('virtualbox') do

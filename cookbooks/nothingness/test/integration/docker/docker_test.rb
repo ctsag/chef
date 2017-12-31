@@ -1,6 +1,6 @@
 # Export node attributes
 require 'json'
-node = json('/var/chef/chef_node.json')
+node = json('/run/chef_node.json')
 
 # Have the vanilla docker packages been removed?
 node['default']['pkg']['docker']['purged'].each do |package_name|

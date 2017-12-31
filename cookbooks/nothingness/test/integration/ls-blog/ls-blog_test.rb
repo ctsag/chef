@@ -1,6 +1,6 @@
 # Export node attributes
 require 'json'
-node = json('/var/chef/chef_node.json')
+node = json('/run/chef_node.json')
 
 # Has the directory structure for the ls-blog site been put in place?
 directories = [
