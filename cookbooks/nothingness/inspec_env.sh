@@ -13,9 +13,9 @@ else
 fi
 
 echo 'Extracting FQDN :'
-knife search "chef_environment:${environment}" 2>&1 | grep 'FQDN:' | tr -d ' ' | cut -d':' -f2
+knife search "chef_environment:${environment}" 2>&1 
 echo 'Extracting recipes :'
-knife search "chef_environment:${environment}" 2>&1 | grep 'Recipes:' | tr -d ' ' | cut -d':' -f2- | sed -e "s/${COOKBOOK}:://g" -e "s/^${COOKBOOK},//g" -e 's/,/ /g' -e 's/export-attributes//g'
+knife search "chef_environment:${environment}" 2>&1 
 
 fqdn=`knife search "chef_environment:${environment}" 2>&1 | grep 'FQDN:' | tr -d ' ' | cut -d':' -f2`
 recipes=( `knife search "chef_environment:${environment}" 2>&1 | grep 'Recipes:' | tr -d ' ' | cut -d':' -f2- | sed -e "s/${COOKBOOK}:://g" -e "s/^${COOKBOOK},//g" -e 's/,/ /g' -e 's/export-attributes//g'` )
