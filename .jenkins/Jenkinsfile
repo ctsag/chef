@@ -5,6 +5,7 @@ pipeline {
   environment {
     cookbookDir = 'cookbooks/nothingness'
     branchType = env.GIT_BRANCH.substring(0, 2)
+    emergencyPullRequest = env.CHANGE_BRANCH.substring(0, 10)
   }
 
   stages {
@@ -48,6 +49,9 @@ pipeline {
           environment name: 'branchType', value: 'PR';
           environment name: 'CHANGE_TARGET', value: 'master'
         }
+        not {
+          environment name: 'emergencyPullRequest', value: 'emergency-'
+        }
       }
       steps {
         dir(cookbookDir) {
@@ -77,12 +81,12 @@ pipeline {
       parallel {
         stage('Admin Deployment') {
           steps {
-            sh 'knife ssh -e "role:admin" "chef-client" --ssh-user root'
+            sh 'knife ssh -e "chef_environment:admin" "chef-client" --ssh-user root'
           }
         }
         stage('Dev Deployment') {
           steps {
-            sh 'knife ssh -e "role:dev" "chef-client" --ssh-user root'
+            sh 'knife ssh -e "chef_environment:dev" "chef-client" --ssh-user root'
           }
         }
       }
@@ -106,6 +110,69 @@ pipeline {
               sh './inspec_env.sh dev'
             }
           }
+        }
+      }
+    }
+
+    stage('QA Deployment') {
+      when {
+        branch 'master'
+      }
+      steps {
+        input('Deploy to QA?')
+        sh 'knife ssh -e "chef_environment:qa" "chef-client" --ssh-user root'
+      }
+    }
+
+    stage('QA Acceptance Tests') {
+      when {
+        branch 'master'
+      }
+      steps {
+        dir(cookbookDir) {
+          sh './inspec_env.sh qa'
+        }
+      }
+    }
+
+    stage('Staging Deployment') {
+      when {
+        branch 'master'
+      }
+      steps {
+        input('Deploy to Staging?')
+        sh 'knife ssh -e "chef_environment:stage" "chef-client" --ssh-user root'
+      }
+    }
+
+    stage('Staging Acceptance Tests') {
+      when {
+        branch 'master'
+      }
+      steps {
+        dir(cookbookDir) {
+          sh './inspec_env.sh stage'
+        }
+      }
+    }
+
+    stage('Production Deployment') {
+      when {
+        branch 'master'
+      }
+      steps {
+        input('Deploy to Staging?')
+        sh 'knife ssh -e "chef_environment:prod" "chef-client" --ssh-user root'
+      }
+    }
+
+    stage('Production Acceptance Tests') {
+      when {
+        branch 'master'
+      }
+      steps {
+        dir(cookbookDir) {
+          sh './inspec_env.sh prod'
         }
       }
     }
