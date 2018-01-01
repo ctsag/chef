@@ -40,7 +40,7 @@ describe 'nothingness::default' do
     )
   end
 
-  it 'sets the timezone to Athens, Greece' do
+  it 'sets the timezone to Europe, Athens' do
     expect(chef_run).to run_execute('timedatectl set-timezone "Europe/Athens"')
   end
 

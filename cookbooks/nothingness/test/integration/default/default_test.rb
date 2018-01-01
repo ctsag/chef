@@ -14,7 +14,7 @@ describe command('getenforce') do
   its('stdout') { should_not cmp 'Enabled' }
 end
 
-# Has the timezone been set to Athens, Greece?
+# Has the timezone been set to Europe, Athens?
 timezone = %r{Europe/Athens}
 describe command('timedatectl | grep "Time zone:"') do
   its('stdout') { should match timezone }
