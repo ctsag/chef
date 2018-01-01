@@ -29,5 +29,5 @@ else
     exit 3
 fi
 
-echo "InSpec tests done. Exit code is ${status}"
+echo "InSpec tests for host ${fqdn} done. Exit code is ${status}"
 exit ${status}
