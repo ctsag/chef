@@ -48,7 +48,7 @@ pipeline {
           environment name: 'branchType', value: 'PR';
           environment name: 'CHANGE_TARGET', value: 'master'
           expression {
-            return (env.CHANGE_BRANCH == null) ? true : not env.CHANGE_BRANCH.contains('/emergency-') 
+            return (env.CHANGE_BRANCH == null) ? true : ! env.CHANGE_BRANCH.contains('/emergency-') 
           }
         }
       }
