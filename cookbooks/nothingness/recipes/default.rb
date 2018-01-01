@@ -13,7 +13,7 @@ execute 'selinux_disable' do
   returns [0, 1]
 end
 
-# Set the timezone to Athens, Greece
+# Set the timezone to Europe, Athens
 execute 'timezone_Athens' do
   command 'timedatectl set-timezone "Europe/Athens"'
 end
