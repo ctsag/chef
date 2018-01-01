@@ -5,7 +5,6 @@ pipeline {
   environment {
     cookbookDir = 'cookbooks/nothingness'
     branchType = env.GIT_BRANCH.substring(0, 2)
-    emergencyPullRequest = env.CHANGE_BRANCH.substring(0, 10)
   }
 
   stages {
@@ -48,9 +47,9 @@ pipeline {
         allOf {
           environment name: 'branchType', value: 'PR';
           environment name: 'CHANGE_TARGET', value: 'master'
-        }
-        not {
-          environment name: 'emergencyPullRequest', value: 'emergency-'
+          expression {
+            return (env.CHANGE_BRANCH == null) ? true : env.CHANGE_BRANCH.contains('/emergency-') 
+          }
         }
       }
       steps {
