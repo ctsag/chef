@@ -6,7 +6,7 @@ First, update all yum repositories
 yum update
 ```
 
-Start by installing the Chef Development Kit
+Start by installing the Chef Development Kit rpm detailed in , https://downloads.chef.io/chefdk e.g.
 
 ```bash
 yum install https://packages.chef.io/files/stable/chefdk/2.4.17/el/7/chefdk-2.4.17-1.el7.x86_64.rpm
@@ -63,6 +63,12 @@ systemctl restart firewalld
 ```
 
 # Setting up a Chef Workstation
+
+Just like with the Chef Server, start by installing the Chef Development Kit rpm detailed in , https://downloads.chef.io/chefdk e.g.
+
+```bash
+yum install https://packages.chef.io/files/stable/chefdk/2.4.17/el/7/chefdk-2.4.17-1.el7.x86_64.rpm
+```
 
 Now, from the workstation intended to control Chef Server via knife commands, copy over the chefadmin.pem file :
 
