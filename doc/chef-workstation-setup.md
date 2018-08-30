@@ -1,3 +1,32 @@
+# Preparation
+
+First, update all yum repositories
+
+```bash
+yum update
+```
+
+Now, install git
+
+```bash
+yum install git
+```
+
+Next, configure git
+
+```bash
+git config --global user.name "ctsag"
+git config --global user.email "chrtsago@yahoo.gr"
+```
+
+Generate a SSH public key
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "ctsag@decleyre.nothingness.gr"
+```
+
+And add the contents of ~/.ssh/id_rsa.pub to the SSH keys on your github account settings
+
 # Setting up a Chef Workstation
 
 Just like with the Chef Server, start by installing the Chef Development Kit rpm detailed in , https://downloads.chef.io/chefdk e.g.
