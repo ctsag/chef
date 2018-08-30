@@ -27,6 +27,12 @@ ssh-keygen -t rsa -b 4096 -C "ctsag@decleyre.nothingness.gr"
 
 And add the contents of ~/.ssh/id_rsa.pub to the SSH keys on your github account settings
 
+We can now clone the chef cookbook, for instance :
+
+```bash
+git clone git@github.com:ctsag/chef.git
+```
+
 # Setting up a Chef Workstation
 
 Just like with the Chef Server, start by installing the Chef Development Kit rpm detailed in , https://downloads.chef.io/chefdk e.g.
@@ -38,7 +44,7 @@ yum install https://packages.chef.io/files/stable/chefdk/2.4.17/el/7/chefdk-2.4.
 Now, from the workstation intended to control Chef Server via knife commands, copy over the chefadmin.pem file :
 
 ```bash
-scp root@proudhon:~/chefadmin.pem . 
+scp root@proudhon:~/chefadmin.pem ~/chef/.chef/
 ```
 
 Still on the workstation, fetch the SSL certificate
