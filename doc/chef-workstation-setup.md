@@ -64,6 +64,7 @@ knife ssl check
 Now, begin by installing (but not uploading) cookbooks used for local testing
 
 ```bash
+cd chef/cookbooks/nothingness
 berks install
 ```
 
