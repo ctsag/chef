@@ -8,6 +8,8 @@ The next step is to let your router know about your No-IP credentials and which 
 
 # Port forwarding
 
-Add port forwarding for HTTPS (port 443), Chef (depends on configuration, 
+Add port forwarding for SSH (port 22), HTTP (port 80), HTTPS (port 443) and Chef (/etc/opscode/chef-server.rb on the Chef admin box contains the ports, for instance 4443-4444) and send them all to the administration box.
 
 # Linode DND record
+
+In Linode's DNS manager, make sure to add a CNAME to your DDNS host for your administration box.
