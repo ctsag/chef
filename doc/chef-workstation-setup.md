@@ -30,6 +30,7 @@ And add the contents of ~/.ssh/id_rsa.pub to the SSH keys on your github account
 We can now clone the chef cookbook, for instance :
 
 ```bash
+cd ~
 git clone git@github.com:ctsag/chef.git
 ```
 
@@ -50,12 +51,14 @@ scp root@proudhon:~/chefadmin.pem ~/chef/.chef/
 Still on the workstation, fetch the SSL certificate
 
 ```bash
+cd ~/chef
 knife ssl fetch
 ```
 
 And verify they work fine
 
 ```bash
+cd ~/chef
 knife ssl check
 ```
 
@@ -71,6 +74,7 @@ berks install
 Then, upload the coobook
 
 ```bash
+cd ~/chef
 knife cookbook upload nothingness
 ```
 
