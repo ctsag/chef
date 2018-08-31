@@ -109,12 +109,12 @@ Now, finally bootstrap a node
 
 ```bash
 cd ~/chef/cookbooks/nothingness
-knife bootstrap proudhon.int.nothingness.gr --ssh-user root --ssh-password 'insecureword' --node-name proudhon --run-list 'role[admin]' --environment admin
+knife bootstrap proudhon.int.nothingness.gr --ssh-user root --node-name proudhon --run-list 'role[admin]' --environment admin
 ```
 
 From now on, you can run the Chef client remotely to execute the node's run list
 
 ```bash
 cd ~/chef/cookbooks/nothingness
-knife ssh 'name:proudhon' 'chef-client' --ssh-user root --ssh-password 'insecureword'
+knife ssh 'name:proudhon' 'chef-client' --ssh-user root
 ```
