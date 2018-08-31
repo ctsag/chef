@@ -67,7 +67,7 @@ knife ssl check
 Now, begin by installing (but not uploading) cookbooks used for local testing
 
 ```bash
-cd chef/cookbooks/nothingness
+cd ~/chef/cookbooks/nothingness
 berks install
 ```
 
@@ -81,12 +81,14 @@ knife cookbook upload nothingness
 Create roles
 
 ```bash
+cd ~/chef/cookbooks/nothingness
 knife role from file roles/*
 ```
 
 Create environments
 
 ```bash
+cd ~/chef/cookbooks/nothingness
 knife environment from file environments/*
 ```
 
@@ -106,7 +108,8 @@ ssh copy-id root@proudhon
 Now, finally bootstrap a node
 
 ```bash
-knife bootstrap proudhon.nothingness.gr --ssh-user root -ssh-password 'insecureword' --node-name proudhon --run-list 'role[admin]' --environment admin
+cd ~/chef/cookbooks/nothingness
+knife bootstrap proudhon.int.nothingness.gr --ssh-user root --ssh-password 'insecureword' --node-name proudhon --run-list 'role[admin]' --environment admin
 ```
 
 From now on, you can run the Chef client remotely to execute the node's run list
