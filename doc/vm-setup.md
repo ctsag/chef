@@ -30,6 +30,10 @@ Clic on "Customize Hardware" and make sure tha memory and CPU are set as recomme
 
 The most critical part is to enable the "Virtualize Intel VT-x/EPT or AMD-V/RVI" option in the Processors tab. This enables nested virtualization which is required for the Test Kitchen to use Vagrant/VirtualBox from within our virtual machines.
 
+## Headless Mode and Running Multiple VMs
+
+Unfortunately VMWare Player does not support headless mode, so you're just going to have to get used to having open windows for each VM you're running. How to run multiple VMs is not an obvious option and, effectively, it can only happen by opening multiple instances of VMWare Player.
+
 # CentOS Installation Wizard
 
 ## Network And Host Name
