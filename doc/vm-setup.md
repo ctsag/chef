@@ -18,7 +18,7 @@ Select "Installer disc image file (iso)" and browser to the CentOS 7 ISO file.
 
 ## Second Screen
 
-Set virtual machine name to something alone the lines of "0. proudhon [Administration]" and location to something along the lines of "D:\Virtualization\proudhon"
+Set virtual machine name to something alone the lines of "proudhon [Administration]" and make sure the location is appropriately set.
 
 ## Third Screen
 
