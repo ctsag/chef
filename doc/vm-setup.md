@@ -10,7 +10,7 @@ In terms of the Linode VM, a Linode 1024 plan is good enough.
 
 ## Warning
 
-VMWare orders the list of VMs in a weird way, in that the last VM created gets to be the first in the list. Take that into account when creating multiple VMs.
+VMWare orders the list of VMs in a weird way, so don't bother trying to add numbers to your VM names to force them to be ordered in a specific way.
 
 ## First Creen
 
