@@ -5,3 +5,5 @@
 [Setting up a Chef Server](/doc/chef-server-setup.md)
 
 [Setting up a Chef Workstation](/doc/chef-workstation-setup.md)
+
+[Basic Chef Operations](/doc/basic-chef-operations.md)
