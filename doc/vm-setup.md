@@ -28,6 +28,8 @@ Set disk size to 20GB and select "Store virtual disk as a single file"
 
 Clic on "Customize Hardware" and make sure tha memory and CPU are set as recommended above. Make sure audio is disabled and set the network adapter to Bridged. On the network adapter tab, click on "Configure Adapters" and deselect everything but the actual physical adapter. On the USB Controller tab, deselect all options.
 
+The most critical part is to enable the "Virtualize Intel VT-x/EPT or AMD-V/RVI" option in the Processors tab. This enables nested virtualization which is required for the Test Kitchen to use Vagrant/VirtualBox from within our virtual machines.
+
 # CentOS Installation Wizard
 
 ## Network And Host Name
