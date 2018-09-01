@@ -7,3 +7,5 @@
 [Setting up a Chef Workstation](/doc/chef-workstation-setup.md)
 
 [Basic Chef Operations](/doc/basic-chef-operations.md)
+
+[Working with Test Kitchen](/doc/working-with-test-kitchen.md)
