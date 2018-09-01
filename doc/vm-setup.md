@@ -8,6 +8,10 @@ In terms of the Linode VM, a Linode 1024 plan is good enough.
 
 # VMWare Creation Wizard
 
+## Warning
+
+VMWare orders the list of VMs in a weird way, in that the last VM created gets to be the first in the list. Take that into account when creating multiple VMs.
+
 ## First Creen
 
 Select "Installer disc image file (iso)" and browser to the CentOS 7 ISO file.
