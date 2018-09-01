@@ -1,7 +1,5 @@
-[DDNS setup](/doc/ddns-setup.md)
+# Chef Cookbook : Nothingness
 
-[VM setup](/doc/vm-setup.md)
+This cookbook is responsible for setting up a pipelined development chain, consisting of an administration server, a development box, a QA box, a staging box and a production box.
 
-[Setting up a Chef Server](/doc/chef-server-setup.md)
-
-[Setting up a Chef Workstation](/doc/chef-workstation-setup.md)
+The setup consists of basic security and convenience settings, installation of essential user and development level packages and configuration of a Jenkins CI server.
