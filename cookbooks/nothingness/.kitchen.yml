@@ -10,12 +10,12 @@ verifier:
   name: inspec
 
 platforms:
-  - name: centos-7.4
+  - name: centos-7.5
     driver:
-      box: bento/centos-7.4
+      box: bento/centos-7.5
 
 suites:
-  - name: dev
+  - name: global
     run_list:
       - recipe[nothingness::default]
       - recipe[nothingness::users]
@@ -40,43 +40,3 @@ suites:
         - test/integration/docker
     attributes:
       host_context: ".dev"
-  - name: admin
-    run_list:     
-      - recipe[nothingness::default]     
-      - recipe[nothingness::users]
-      - recipe[nothingness::security]
-      - recipe[nothingness::httpd]
-      - recipe[nothingness::jenkins]
-      - recipe[nothingness::virtualbox]
-      - recipe[nothingness::vagrant]
-      - recipe[nothingness::docker]
-      - recipe[nothingness::export-attributes]
-    verifier:
-      inspec_tests:
-        - test/integration/default
-        - test/integration/users
-        - test/integration/security
-        - test/integration/httpd
-        - test/integration/jenkins
-        - test/integration/virtualbox
-        - test/integration/vagrant
-        - test/integration/docker
-    attributes:
-      host_context: ""
-  - name: build_chain
-    run_list:
-      - recipe[nothingness::default]
-      - recipe[nothingness::users]
-      - recipe[nothingness::security]
-      - recipe[nothingness::httpd]
-      - recipe[nothingness::ls-blog]
-      - recipe[nothingness::export-attributes]
-    verifier:
-      inspec_tests:
-        - test/integration/default
-        - test/integration/users
-        - test/integration/security
-        - test/integration/httpd
-        - test/integration/ls-blog
-    attributes:
-      host_context: ""
