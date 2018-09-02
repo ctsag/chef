@@ -20,6 +20,7 @@ bin/*
 Berksfile.lock
 .zero-knife.rb
 Policyfile.lock.json
+inspec.lock
 
 # Chef Client
 nodes/*
