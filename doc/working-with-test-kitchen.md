@@ -21,7 +21,7 @@ cd ~/chef/cookbooks/nothingness
 kitchen list
 ```
 
-Creating all Kitchen instances (this will probably take a while)
+Creating all Kitchen instances (this will probably take a while). We can work with a specific instance by providing its name or part of it as an argument, otherwise this will create all instances.
 
 ```bash
 cd ~/chef/cookbooks/nothingness
@@ -29,3 +29,8 @@ kitchen create
 ```
 
 Destroying all Kitchen istnances
+
+```bash
+cd ~/chef/cookbooks/nothingness
+kitchen destroy
+```
