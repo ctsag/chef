@@ -12,6 +12,7 @@ node['pkg']['virtualbox'].each do |package_name|
 end
 
 # Rebuild and load the VirtualBox kernel module
+# TODO : this requires a reboot before it can run
 execute 'vbox_config' do
   command '/sbin/vboxconfig'
 end
