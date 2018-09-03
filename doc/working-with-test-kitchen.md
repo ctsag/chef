@@ -28,9 +28,27 @@ cd ~/chef/cookbooks/nothingness
 kitchen create
 ```
 
-Destroying all Kitchen istnances
+Next up, converge. This step provisions the run lists defined in your .kitchen.yml file/
+
+```bash
+cd ~/chef/cookbooks/nothingness
+kitchen converge
+```
+
+Now we can run the InSpec tests. Again, these are defined in the .kitchen.yml file.
+
+```bash
+cd ~/chef/cookbooks/nothingness
+kitchen verify
+```
+
+Finally, let's destroy all Kitchen istnances
 
 ```bash
 cd ~/chef/cookbooks/nothingness
 kitchen destroy
 ```
+
+## Running InSpec without Kitchen
+
+TODO
