@@ -6,33 +6,51 @@ In terms of local VMs, the administration and development boxes should be set at
 
 In terms of the Linode VM, a Linode 1024 plan is good enough.
 
-# VMWare Creation Wizard
+# Hyper-V Creation Wizard
 
-## Warning
+## Installing Hyper-V
 
-VMWare orders the list of VMs in a weird way, so don't bother trying to add numbers to your VM names to force them to be ordered in a specific way.
+Hyper-V is an optional component of Microsoft Windows, so all you have to do to install it is to select it from the list of of optional Windows features in the Add/Remove Programs section of Control Panel.
 
-## First Creen
+## Virtual Switch
 
-Select "Installer disc image file (iso)" and browser to the CentOS 7 ISO file.
+To enable networking, you'll need to create a virtual network switch. This can be done in the Virtual Switch Manager section of the Hyper-V Manager. Make sure it's named appropriately and set to External Network and bridge it to your network adapter. Also, remember to tick the "Allow management operating system to share this network adapter" box.
 
-## Second Screen
+## Creation Wizard - First Screen
 
-Set virtual machine name to something alone the lines of "proudhon [Administration]" and make sure the location is appropriately set.
+Just press next.
 
-## Third Screen
+## Creation Wizard - Second Screen
 
-Set disk size to 20GB and select "Store virtual disk as a single file"
+Naming should be along the lines of "0. proudhon [Administration]", "1. decleyre [Development]" and so on and so forth. Tick the "Store the virtual machine in a different location" box and specify an appropriate path.
 
-## Fourth Screen
+## Creation Wizard - Third Screen
 
-Clic on "Customize Hardware" and make sure tha memory and CPU are set as recommended above. Make sure audio is disabled and set the network adapter to Bridged. On the network adapter tab, click on "Configure Adapters" and deselect everything but the actual physical adapter. On the USB Controller tab, deselect all options.
+Select Generation 2.
 
-The most critical part is to enable the "Virtualize Intel VT-x/EPT or AMD-V/RVI" option in the Processors tab. This enables nested virtualization which is required for the Test Kitchen to use Vagrant/VirtualBox from within our virtual machines.
+## Creation Wizard - Fourth Screen
 
-## Headless Mode and Running Multiple VMs
+Make sure "Use Dynamic Memory for this virtual machine" is ticked and select the appropriate RAM size.
 
-Unfortunately VMWare Player does not support headless mode, so you're just going to have to get used to having open windows for each VM you're running. How to run multiple VMs is not an obvious option and, effectively, it can only happen by opening multiple instances of VMWare Player.
+## Creation Wizard - Fifth Screen
+
+Here's where you specify the virtual network switch we discuseed earlier on.
+
+## Creation Wizard - Sixth Screen
+
+Just specify the size of the virtual hard disk here.
+
+## Creation Wizard - Seventh Screen
+
+Make sure you specify the location of the CentOS 7 installer ISO image.
+
+## Creation Wizard - Eigth Screen
+
+Just press Finish.
+
+## Post Creation Wizard Configuration
+
+On the VM's Settings dialogue, go to the Security section and untick the "Enable Secure Boot" box. On the Integration Services section, enable everything.
 
 # CentOS Installation Wizard
 
