@@ -12,6 +12,16 @@ There are a couple of downsides to this method of testing. The first one is virt
 
 The second limitation is similar but simpler. Nested VMs mean the environment that hosts all these needs to carry some decent RAM. Since we need Kitchen testing to run on both the administration server and the development box, that's a total of 6 to 8 gigs of RAM and even that might not be enough. This in turns forces us to think about QA strategy. Each test suite requires its own VM. So, either we attempt to configure those VMs to take less memory or we start with only one test suite that tests everyhing and only create a second one if we have no other choice.
 
+## VirtualBox prep step
+
+VirtualBox runs on kernel drivers. Building and loading them requires the following command to be executed
+
+```bash
+/sbin/vboxconfig
+```
+
+Unfortunately, for this to run you'll need to install the kernel-devel package and then reboot and only after that can your this command. This reboot step makes automating this step tricky.
+
 ## Working with the Kitchen CLI
 
 Listing Kitchen instances
