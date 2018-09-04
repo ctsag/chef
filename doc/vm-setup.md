@@ -2,7 +2,7 @@
 
 All boxes are CentOS 7 based. The chain consists of an administration/server box, a development box, a QA box, a staging box and a production box. The first four are local VMs while the last one is a Linode VM.
 
-In terms of local VMs, the administration and development boxes should be set at 3072MB RAM while all the rest should be set at 1024MB. 1 CPU and 20GB HDD will do.
+In terms of local VMs, the administration box should be set at 4096MB RAM, the development box should be set at 2048MB RAM while all the rest should be set at 1024MB. 1 CPU and 20GB HDD will do.
 
 In terms of the Linode VM, a Linode 1024 plan is good enough.
 
@@ -51,6 +51,14 @@ Just press Finish.
 ## Post Creation Wizard Configuration
 
 On the VM's Settings dialogue, go to the Security section and untick the "Enable Secure Boot" box. On the Integration Services section, enable everything.
+
+## Enabling Nested Virtualization
+
+Enabling nested virtualization for Hyper-V can be done via a small script included in this repo. You'll need to have the boxes shut down when you run this and the PowerShell console needs to be launched as an administrator. This step is required in the administration and development boxes only, as they're the ones that are tasked with running VirtualBox.
+
+```bash
+.\Enable-NestedVm.ps1 -VmName '*proudhon*'
+```
 
 # CentOS Installation Wizard
 
