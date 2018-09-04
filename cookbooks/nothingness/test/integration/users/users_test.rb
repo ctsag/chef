@@ -6,8 +6,8 @@ describe user('ctsag') do
 end
 
 # Has the default user's password been properly set?
-describe shadow.users('ctsag') do
-  its('passwords') { should include '$1$4G0dL9.P$b//V0sro19xF3CmVc2rcY.' }
+describe shadow.user('ctsag') do
+  its('password') { should include '$1$4G0dL9.P$b//V0sro19xF3CmVc2rcY.' }
 end
 
 # Has the default user's home directory been created?
