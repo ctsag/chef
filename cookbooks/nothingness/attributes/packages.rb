@@ -31,7 +31,7 @@ default['pkg']['docker']['purged'] = [
 ]
 
 default['pkg']['vagrant']['name'] = 'vagrant'
-default['pkg']['vagrant']['source'] = 'https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.rpm'
+default['pkg']['vagrant']['source'] = 'https://releases.hashicorp.com/vagrant/2.1.4/vagrant_2.1.4_x86_64.rpm'
 
 default['pkg']['virtualbox'] = [
   'kernel-devel',
