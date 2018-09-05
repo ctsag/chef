@@ -26,6 +26,7 @@ nodes/*
 
 # Knife
 .chef/*.pem
+.chef/chef_guid
 .chef/local-mode-cache/*
 .chef/syntaxcache/*
 .chef/trusted_certs/*
