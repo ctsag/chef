@@ -34,7 +34,7 @@ default['pkg']['vagrant']['name'] = 'vagrant'
 default['pkg']['vagrant']['source'] = 'https://releases.hashicorp.com/vagrant/2.1.4/vagrant_2.1.4_x86_64.rpm'
 
 default['pkg']['virtualbox'] = [
-  'kernel-devel',
+  'kernel-devel-' + node['kernel']['release'],
   'gcc',
   'VirtualBox-5.2',
 ]
