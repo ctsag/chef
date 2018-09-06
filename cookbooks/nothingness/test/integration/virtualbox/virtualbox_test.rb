@@ -15,6 +15,8 @@ node['default']['pkg']['virtualbox'].each do |package_name|
   end
 end
 
+# TODO kernel-devel package test fails, figure it out
+
 # Has the VirtualBox kernel module been rebuilt and loaded?
 describe command('lsmod | grep vbox') do
   its('exit_status') { should eq 0 }
