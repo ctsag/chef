@@ -1,4 +1,4 @@
-# Basic Chef Operations
+# Basic Chef operations
 
 ## Working with cookbooks
 
