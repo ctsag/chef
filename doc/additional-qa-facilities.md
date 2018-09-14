@@ -65,6 +65,27 @@ Untouched Resources:
   yum_package[virtualbox-5.2]        nothingness/recipes/virtualbox.rb:11
 ```
 
+Last but not least, you can permanently configure ChefSpec's behaviour by placing an .rspec file at the top level directory of your cookbook. You can have this done automatically by running
+
+```bash
+cd ~/chef/cookbooks/nothingness
+chef exec rspec --init
+```
+
+This will place the .rspec file at the present working directory. Initially, the file will look like this 
+
+```bash
+--require spec_helper
+```
+
+You can add any arguments you want to this. For example, to add color and use the InSpec-like documentation format (instead of the progress format), you can have your .rspec file look like this
+
+```bash
+--require spec_helper
+--color
+--format d
+```
+
 ## Functional and integration tests
 
 TODO
