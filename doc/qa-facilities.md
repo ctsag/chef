@@ -1,4 +1,4 @@
-# Additional QA facilities
+# QA facilities
 
 ## Lint testing
 
@@ -88,8 +88,20 @@ You can add any arguments you want to this. For example, to add color and use th
 
 ## Functional and integration tests
 
-TODO
+Functional and integration tests are handled by Kitchen CI, more commonly referred to as Test Kitchen or just Kitchen.
+
+Kitchen tests are traditionally written in InSpec, Chef's transmutation of RSpec/ServerSpec. These are then executed on Vagrant managed ad-hoc instances.
+
+Working with Kitchen is further documented on the following document
+
+[Working with Test Kitchen](/doc/working-with-test-kitchen.md)
 
 ## Manual node verification
 
-TODO
+Although Test Kitchen runs on InSpec tests, InSpec itself is not limited within the context of Test Kitchen, or even Chef. Instead, it can used as a standalone way to manually execute tests, both locally and on remote hosts.
+
+What's great about this way of working with InSpec is that you can run a test on a remote host without having to install anything on it.
+
+Again, working with InSpec in a standalone context is documented on the following document
+
+[Working with Test Kitchen](/doc/working-with-test-kitchen.md)

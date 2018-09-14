@@ -40,8 +40,8 @@ Now that we're done with the introductions, here's a compilation of documents to
 
 [Basic Chef operations](/doc/basic-chef-operations.md)
 
-[Working with Test Kitchen](/doc/working-with-test-kitchen.md)
+[QA facilities](/doc/qa-facilities.md)
 
-[Additional QA facilities](/doc/additional-qa-facilities.md)
+[Working with Test Kitchen](/doc/working-with-test-kitchen.md)
 
 [A test driven day at work with Chef](/doc/a-test-driven-day-at-work-with-chef.md)
