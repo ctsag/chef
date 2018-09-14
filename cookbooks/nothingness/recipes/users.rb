@@ -1,3 +1,5 @@
+# TODO: move 'ctsag' and other hardcoded values where they can be easiliy changed in one place
+
 # Create the default user
 user 'ctsag' do
   manage_home true
