@@ -6,7 +6,7 @@ readonly TEST="test/integration"
 status=0
 
 if [ $# -ne 1 ] ; then
-    echo "No environment provided. Aborting" >&2
+    echo "No environment provided. Aborting." >&2
     exit 1
 else
     environment="${1}"
@@ -25,7 +25,7 @@ if [ ! -z "${fqdn}" ] && [ ${#recipes[@]} -gt 0 ] ; then
         fi
     done
 else
-    echo "Unable to fetch node FQDN and/or recipe data. Aborting" >&2
+    echo "Unable to fetch node FQDN and/or recipe data. Aborting." >&2
     exit 3
 fi
 
