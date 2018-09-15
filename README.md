@@ -25,6 +25,7 @@ A number of conventions within the project that are currently hardcoded into the
 - a sudo user is created for each environment. This user's login ('ctsag'), password, email address ('chrtsago@yahoo.gr') and full name ('Christos Tsagkournis') are all coded into the project and should be modified to suit the user
 - the hostnames for each environment are set as such : proudhon is the Chef server, decleyre is the Chef workstation, bakunin is the QA box, kropotkin is the staging  box and goldman is the production box.
 - the domain name is set to nothingness.gr and its internal subdomain is set to int.nothingness.gr
+- in various prompts to type in shell commands, it is assumed that you have cloned this project to ~/chef and that your cookbook is named 'nothingness', meaning your full cookbook path will be '~/chef/cookbooks/nothingness'
 
 ## Documentation
 
