@@ -58,7 +58,7 @@ On the VM's Settings dialogue, go to the Security section and untick the "Enable
 
 Enabling nested virtualization for Hyper-V can be done via a small script included in this repo. You'll need to have the boxes shut down when you run this and the PowerShell console needs to be launched as an administrator. This step is required in the administration and development boxes only, as they're the ones that are tasked with running VirtualBox.
 
-```bash
+```pwsh
 .\Enable-NestedVm.ps1 -VmName '*proudhon*'
 ```
 

@@ -115,7 +115,7 @@ You can also create your own private Supermarket. An additional benefit of worki
 
 First, make sure a Berskfile is present and configured as such :
 
-```bash
+```vim
 # frozen_string_literal: true
 source 'https://supermarket.chef.io'
 metadata
@@ -130,7 +130,7 @@ berks install
 
 If you wanted to fetch a cookbook from the Supermarket, you'd add the following line to the Berskfile :
 
-```bash
+```vim
 cookbook 'logrotate'
 ```
 

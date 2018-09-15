@@ -22,7 +22,7 @@ cookstyle recipes/default.rb
 
 Cookstyle is based on Rubocop and, as such, you can control a lot of aspects of its behaviour by placing a file named .rubocop.yml in the cookbook directory. For example, to modify what constitutes an acceptable line terminator (useful for Windows), you can add the following :
 
-```bash
+```yml
 Layout/EndOfLine:
   EnforcedStyle: native
 ```
@@ -72,7 +72,7 @@ cd ~/chef/cookbooks/nothingness
 chef exec rspec --init
 ```
 
-This will place the .rspec file at the present working directory. Initially, the file will look like this 
+This will place the .rspec file at the present working directory. Initially, the file will look like this
 
 ```bash
 --require spec_helper
