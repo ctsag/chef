@@ -79,7 +79,41 @@ it 'installs the Apache httpd package' do
 end
 ```
 
-And it's as simple as that, almost plain English. At this point, we have two options. We can write the test implentations for our remaining expectations, or we can iterate the recipe that fulfills this first expectation
+And it's as simple as that, almost plain English. At this point, we have two options. We can write the test implementations for our remaining expectations and then start writing recipe code that passes those tests, or we can iterate between writing one test at a time and then writing the code that makes this one test pass, until all expectations are fulfilled. For the sake of brevity, we'll take the latter approach in this document and focus only on the expectation referenced above, the installation of the httpd package. Then, at the end of the document, we'll take a look at how our complete test suit and recipe look like.
+
+Before we move into writing the recipe that passes our test, let's have a quick look at our test suite.
+
+```ruby
+require 'spec_helper'
+
+describe 'nothingness::httpd' do
+  let(:chef_run) do
+    runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '7.4.1708')
+    runner.converge(described_recipe)
+  end
+
+  it 'converges successfully' do
+    expect { chef_run }.to_not raise_error
+  end
+
+  it 'installs the Apache httpd package' do
+    expect(chef_run).to install_package('httpd')
+  end
+
+  it 'modifies its configuration file to our preference'
+
+  it 'sets up the directory structure for the default website'
+
+  it 'configures appropriate permissions for the default website directory structure'
+
+  it 'configures the firewall to allow traffic for http and https ports'
+
+  it 'enables and starts the httpd service'
+
+end
+```
+
+Now, let's take a look at what happens if run this test suite.
 
 ## Step 2 : Writing the recipe
 
