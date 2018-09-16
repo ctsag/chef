@@ -1,4 +1,6 @@
-# Preparation
+# Setting up a Chef Workstation
+
+## Preparation
 
 First, update all yum repositories
 
@@ -34,7 +36,7 @@ cd ~
 git clone git@github.com:ctsag/chef.git
 ```
 
-# Setting up a Chef Workstation
+## Setting up a Chef Workstation
 
 Just like with the Chef Server, start by installing the Chef Development Kit rpm detailed in , https://downloads.chef.io/chefdk e.g.
 
@@ -62,7 +64,7 @@ cd ~/chef
 knife ssl check
 ```
 
-# Bootstrapping nodes
+## Bootstrapping nodes
 
 Now, begin by installing (but not uploading) cookbooks used for local testing
 
