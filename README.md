@@ -2,11 +2,11 @@
 
 The purpose of this project is to propose and implement a minimal development pipeline managed by Chef. It is, effectively, the documentation of of the author's living experiments with Chef, DevOps, and concepts such as Constinuous Integration, Continuous Delivery and Continuous Automation.
 
-Throughout the experiment, emphasis has been placed into implementing a test driven approach to as much as the development process as possible. It is the author's firm belief that, just as there is no science without the principle of falsifiability, so there is no computer science without the equivalent of falsifiability, which is using tests to prove (or disprove) that what we build works.
+Throughout the experiment, emphasis has been placed into implementing a test driven approach to as much as the development process as possible. It is the author's firm belief that, just as there is no science without the principle of falsifiability, so there is no computer science without the equivalent of falsifiability, which boils down to using tests to prove (or disprove) that what we build works.
 
 ## Proposed infrastructure
 
-The infrastrucure proposed consists of the following
+The infrastrucure proposed consists of the following :
 
 - a Chef server
 - a Chef management workstation
@@ -20,16 +20,16 @@ For the time being, it is preferable to keep the proposed infrastructure bare bo
 
 ## Conventions
 
-A number of conventions within the project that are currently hardcoded into the code provided. To make things a bit easier to modify, efforts have been made to keep anything that is hardcoded in this way to a single place, so that there is no need to change values in multiple places. Until hardcoding is removed, however, it might be useful to list these conventions :
+A number of conventions are used throughout the project and are currently hardcoded into the code provided. To make things a bit easier to modify, efforts have been made to keep anything that is hardcoded in this way to a single place, so that there is no need to change values in multiple places. Until hardcoding is removed or at least minimized, however, it might be useful to list these conventions :
 
-- a sudo user is created for each environment. This user's login ('ctsag'), password, email address ('chrtsago@yahoo.gr') and full name ('Christos Tsagkournis') are all coded into the project and should be modified to suit the user
-- the hostnames for each environment are set as such : proudhon is the Chef server, decleyre is the Chef workstation, bakunin is the QA box, kropotkin is the staging  box and goldman is the production box.
-- the domain name is set to nothingness.gr and its internal subdomain is set to int.nothingness.gr
-- in various prompts to type in shell commands, it is assumed that you have cloned this project to \~/chef and that your cookbook is named 'nothingness', meaning your full cookbook path will be \~/chef/cookbooks/nothingness
+- a sudo user is created for each environment. This user's login (`ctsag`), password, email address (`chrtsago at yahoo.gr`) and full name (`Christos Tsagkournis`) are all coded into the project and should be modified to suit the user.
+- the hostnames for each environment are set as such : `proudhon` is the Chef server, `decleyre` is the Chef workstation, `bakunin` is the QA box, `kropotkin` is the staging  box and `goldman` is the production box.
+- the domain name is set to `nothingness.gr` and its internal subdomain is set to `int.nothingness.gr`.
+- in various prompts to type in shell commands, it is assumed that you have cloned this project to \~/chef and that your cookbook is named `nothingness`, meaning your full cookbook path will be `~/chef/cookbooks/nothingness`
 
 ## Documentation
 
-Now that we're done with the introductions, here's a compilation of documents to get you up to speed with the workflow used in this paradigm
+Now that we're done with the introductions, here's a compilation of documents to get you up to speed with the workflow used in this paradigm.
 
 [DDNS setup](/doc/ddns-setup.md)
 

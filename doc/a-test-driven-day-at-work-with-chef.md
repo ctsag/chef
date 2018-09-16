@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The purpose of this document is to describe a test driven workflow into writing a new recipe. It's assumed that a basic Chef insfrastructure is in place, that a cookbook has been created, that run lists have been assigned and that Test Kitchen and its dependencies (e.g. Vagrant and VirtualBox) have been configured and tested to work end to end.
+The purpose of this document is to describe a test driven workflow into writing a new recipe. It's assumed that a basic Chef insfrastructure is in place, that a cookbook has been created, that run lists have been assigned to nodes, roles or environments and that Test Kitchen and its dependencies (e.g. Vagrant and VirtualBox) have been configured and tested to work end to end.
 
 We're also not going to deal with the semantics of specific Chef components such as ChefSpec, Kitchen, etc. Knowledge of how each component works and how to write code for it is heavily assumed.
 
@@ -10,7 +10,7 @@ So, let's figure out how to install and configure the Apache httpd server, using
 
 ## Step 1 : Writing the unit tests
 
-ChefSpec, Chef's rendition of RSpec, is used for unit testing. Unit tests are stored in the spec/unit/recipes directory, in files named ${recipe}_spec.rb . Each file holds the entire suit of tests for a single recipe. Here's a skeleton test suite that simply tests whether the recipe successfully converges
+ChefSpec, Chef's rendition of RSpec, is used for unit testing. Unit tests are stored in the `spec/unit/recipes directory`, in files named `${recipe}_spec.rb`. Each file holds the entire suit of tests for a single recipe. Here's a skeleton test suite that simply tests whether the recipe successfully converges.
 
 ```ruby
 require 'spec_helper'
@@ -28,9 +28,9 @@ describe 'nothingness::httpd' do
 end
 ```
 
-Before we go any further, notice how ChefSpec::ServerRunner is instantiated. It's being told that the platform is CentOS 7.4.1708. You can use ChefSpec contexts to create test suites for the same recipe for different platforms. Apache httpd, for example, might need to be configured differently on Ubuntu. Keep this in mind, because we're not going to deal with multi platform testing in the document.
+Before we go any further, notice how `ChefSpec::ServerRunner` is instantiated. It's being told that the platform is CentOS 7.4.1708. You can use ChefSpec contexts to create test suites for the same recipe but for different platforms. Apache httpd, for example, might need to be configured differently on Ubuntu. Keep this in mind, because we're not going to deal with multi platform testing in the document.
 
-Now, ChefSpec uses the expect syntax of RSpec to declare expectations. With the boiler plate code above at hand we can now start adding what we expect our recipe to do. At this stage, we don't need to implement how these expectations are tested, just what we expect, in plain English. So, what do we expect an httpd recipe to do? We expect it to
+Now, ChefSpec uses the `expect` syntax of RSpec to declare expectations. With the boiler plate code above at hand we can now start adding what we expect our recipe to do. At this stage, we don't need to implement how these expectations are tested, just what we expect, in plain English. So, what do we expect an httpd recipe to do? We expect it to :
 
 - install the Apache httpd package
 - modify its configuration files to our preference
@@ -39,7 +39,7 @@ Now, ChefSpec uses the expect syntax of RSpec to declare expectations. With the 
 - configure the firewall to allow traffic for http and https ports
 - enable and start the httpd service
 
-So, here are these expectations added into the test suite
+So, here are these expectations added into the test suite.
 
 ```ruby
 require 'spec_helper'
@@ -69,9 +69,9 @@ describe 'nothingness::httpd' do
 end
 ```
 
-This simple step of declaring expectation is key to why a test driven approach is a great way to work. By declaring our expectations we essentially break down and document the requirements of the task. We've taken a vague requirement such as "install a web server", broken it down into distinct steps and documented those steps clearly and concisely.
+This simple step of declaring expectationss is key to why a test driven approach is a great way to work. By declaring our expectations we essentially break down and document the requirements of the task. We've taken a vague requirement such as "install a web server", broken it down into distinct subtasks and documented those subtasks clearly and concisely.
 
-The next step is take the first unimplemented expectation and write down what conditions would prove that it has been fulfilled. Let's do that now for "installs the apache httpd package". What do we expect? We expect Chef to install a package named httpd.
+The next step is take the first unimplemented expectation and write down what conditions would prove that it has been fulfilled. Let's do that now for `installs the apache httpd package`. What do we expect? We expect Chef to install a package named httpd.
 
 ```ruby
 it 'installs the Apache httpd package' do
@@ -122,14 +122,14 @@ cd ~/chef/cookbooks/nothingness
 touch recipes/httpd.rb
 ```
 
-Now, let's run ChefSpec
+Now, let's run ChefSpec.
 
 ```bash
 cd ~/chef/cookbooks/nothingness
 chef exec rspec spec/unit/recipes/httpd_spec.rb
 ```
 
-Here's the key part of the output
+Here's the key part of the output.
 
 ```vim
 nothingness::httpd
@@ -145,10 +145,10 @@ nothingness::httpd
 There's a number of items of interest here :
 
 - the expectation that the recipe converges succesfully passes
-- the expectation that it installs the httpd package is marked as FAILED
-- all unimplemented expectations are marked as PENDING
+- the expectation that it installs the httpd package is marked as `FAILED`
+- all unimplemented expectations are marked as `PENDING`
 
-Further down the output we can see the reason of the failure
+Further down the output we can see the reason for the failure.
 
 ```vim
 Failures:
@@ -163,7 +163,7 @@ We can get a rough idea of what's expected to be found within our recipe, so let
 
 ## Step 2 : Writing the recipe
 
-Installing a package is easy, provided it's available through the distribution's package manager. Here's the recipe code that does exactly that, added to the recipe file we created earlier, httpd.rb
+Installing a package is easy, provided it's available through the distribution's package manager. Here's the recipe code that does exactly that, added to the recipe file we created earlier,`httpd.rb`.
 
 ```bash
 package 'httpd'
@@ -171,7 +171,7 @@ package 'httpd'
 
 ## Step 3 : Running the unit tests
 
-Now, let's run ChefSpec again, just as we did earlier on, and focus on the key part of the output
+Now, let's run ChefSpec again, just as we did earlier on, and focus on the key part of the output.
 
 ```vim
 nothingness::httpd
@@ -190,7 +190,7 @@ We now have another choice to make. We can either finish up with the remaining u
 
 ## Step 4 : Writing and running integration and functional tests
 
-It's now time to move to functional tests. This part of the QA chain, along with integration tests, is handled by Test Kitchen and tested by writing tests in InSpec. Let's see how an InSpec functional test for the installation of the httpd package looks like. We'll place the following code in test/integration/users/users_test.rb
+It's now time to move to functional tests. This part of the QA chain, along with integration tests, is handled by Test Kitchen and tested by writing tests in InSpec. Let's see how an InSpec functional test for the installation of the httpd package looks like. We'll place the following code in `test/integration/users/users_test.rb`.
 
 ```vim
 # Has the httpd package been installed?
@@ -199,9 +199,9 @@ describe package('httpd') do
 end
 ```
 
-Contrary to ChefSpec that uses an 'expect' syntax, InSpec uses a 'should' syntax. It's a good idea have a comment state the expectation right before each test, but it's purely for readability.
+Contrary to ChefSpec that uses an `expect` syntax, InSpec uses a `should` syntax. It's a good idea have a comment state the expectation right before each test, but it's purely for readability.
 
-Now, before we can run this test, we'll need to tell Test Kitchen what we want tested and how. Modify the .kitchen.yml file in the cookbook's top level directory as such
+Now, before we can run this test, we'll need to tell Test Kitchen what we want tested and how. Modify the `.kitchen.yml` file in the cookbook's top level directory as such
 
 ```vim
 ---
@@ -290,9 +290,9 @@ Let's recap what we've done by the time we get to this point :
 
 At this point, it's time to version our recipe and upload it to the Chef server, so that it can be distributed and applied to all registered nodes.
 
-First, let's bump the version of our cookbook. Assuming we're currently at 0.1.0, we need to decide what kind of versioning bump represents our change. Chef uses a semantic versioning scheme, which splits the version in three parts, major, minor and revision. The major part of the version indicates a non backwards compatible change, the minor part indicates a backwards compatible feature addition and the revision is reserved for bug fixes. In this case, let's assume we've only added a backwards compatible feature. In this case, we need to get from 0.1.0 to 0.2.0 , and so we modify the metadadata.rb file in the top level directory of our cookbook accordingly.
+First, let's bump the version of our cookbook. Assuming we're currently at 0.1.0, we need to decide what kind of versioning bump represents our change. Chef uses a semantic versioning scheme, which splits the version in three parts, major, minor and revision. The major part of the version indicates a non backwards compatible change, the minor part indicates a backwards compatible feature addition and the revision is reserved for bug fixes. In this case, let's assume we've only added a backwards compatible feature. In this case, we need to get from 0.1.0 to 0.2.0 , and so we modify the `metadadata.rb` file in the top level directory of our cookbook accordingly.
 
-Once we've done that, we can upload our cookbook to the Chef server. This document assumes we've been working with berskhelf.
+Once we've done that, we can upload our cookbook to the Chef server. This document assumes we've been working with Berskhelf.
 
 ```bash
 cd ~/chef/cookbooks/nothingness
@@ -303,22 +303,22 @@ berks upload --no-ssl-verify
 
 With our fully tested new version of our recipe uploaded to the Chef server, it's time to apply it to our bootstrapped nodes.
 
-But how do  nodes does this recipe apply to? This depends on how we're managing our nodes, i.e. how we inform Chef on what each nodes run list includes. It is heavily suggested that run lists are not assigned directly to the nodes themselves but, rather, to roles and enviornments. A node is then assigned a role and an environment and inherits their run list.
+But which nodes does this recipe apply to? This depends on how we're managing our nodes, i.e. how we inform Chef on what each nodes run list includes. It is heavily suggested that run lists are not assigned directly to the nodes themselves but, rather, to roles and enviornments. A node is then assigned a role and an environment and inherits their run list.
 
-We'll asssume, therefore, that we've already set up a role named 'webserver' and assigned it to some of our nodes. We'll need to add our recipe to our role's runlist. To do this, we'll need to edit our role file residing at ~/chef/cookbooks/nothingness/roles/webserver.json and add the following line to the 'run_list' element
+We'll asssume, therefore, that we've already set up a role named `webserver` and assigned it to some of our nodes. We'll need to add our recipe to our role's runlist. To do this, we'll need to edit our role file residing at `~/chef/cookbooks/nothingness/roles/webserver.json` and add the following line to the `run_list` element.
 
 ```vim
     "recipe[nothingness::httpd]"
 ```
 
-Once that's done, we'll upload our updated role file to Chef server
+Once that's done, we'll upload our updated role file to Chef server.
 
 ```bash
 cd ~/chef/cookbooks/nothingness
 knife role from file roles/webserver.json
 ```
 
-We can now have our new recipe applied to all nodes that are registered with the 'webserver' role
+We can now have our new recipe applied to all nodes that are registered with the `webserver` role.
 
 ```bash
 cd ~/chef/cookbooks/nothingness
@@ -331,14 +331,14 @@ And that's about it. Our newly created, fully tested recipe has been applied to 
 
 As a bonus step, let's assume that months have passed and that you're wondering whether a specific node still complies to the Apache httpd recipe. How do we prove this is the case? And I mean definitely prove, down to the last detail of our configuration, not just glance over the node and make an estimated guess.
 
-Well, good news. We can reuse the InSpec functional tests we wrote when we initially developed the recipe. And we can run those remotely, without the need to install any additional software. Let's assume we've identified the node's IP to be 192.168.1.60 . Standalone InSpec testing requires ssh-agent to run, so let's start that up and add our key
+Well, good news. We can reuse the InSpec functional tests we wrote when we initially developed the recipe. And we can run those remotely, without the need to install any additional software. Let's assume we've identified the node's IP to be 192.168.1.60 . Standalone InSpec testing requires ssh-agent to run, so let's start that up and add our key.
 
 ```bash
 eval `ssh-agent`
 ssh-add ~/.ssh/id_rsa
 ```
 
-We can then execute our test on the remote host, like this
+We can then execute our test on the remote host, like this.
 
 ```bash
 cd ~/chef/cookbooks/nothingness
@@ -346,3 +346,7 @@ inspec exec test/integration/httpd/httpd_test.rb -t 'ssh://root@192.168.1.60'
 ```
 
 The exact same tests that were run by Test Kitchen on an ad-hoc virtual machine when we were developing our recipe are now run on the actual node.
+
+## The full test suite
+
+TODO

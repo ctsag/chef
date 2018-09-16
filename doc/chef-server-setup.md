@@ -1,6 +1,6 @@
 # Setting up a Chef Server
 
-First, update all yum repositories
+First, update all yum repositories.
 
 ```bash
 yum update
@@ -31,7 +31,7 @@ bookshelf['url'] = "https://proudhon.nothingness.gr"
 bookshelf['vip_port'] = 4443
 ```
 
-And now we're free to configure our server
+And now we're free to configure our server.
 
 ```bash
 chef-server-ctl reconfigure
@@ -43,7 +43,7 @@ Once that's done with no errors, we can test whether everything's fine :
 curl -D - 'http://localhost:8000/_status' | grep "200 OK"
 ```
 
-This might need a couple of minuts before it starts working, but usually that's not the case.
+This might need a couple of minutes before it starts working, but usually that's not the case.
 
 Now we need to create our administrative user and our organization :
 
