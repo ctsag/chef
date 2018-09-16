@@ -13,7 +13,7 @@ cd ~/chef/cookbook/nothingness
 cookstyle .
 ```
 
-To insepect a single file
+To inspect a single file
 
 ```bash
 cd ~/chef/cookbook/nothingness
