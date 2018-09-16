@@ -7,3 +7,5 @@ end
 service 'sshd' do
   action [:restart]
 end
+
+# TODO: Modify the permissions for everything within ~/.ssh
