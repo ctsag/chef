@@ -105,3 +105,7 @@ What's great about this way of working with InSpec is that you can run a test on
 Again, working with InSpec in a standalone context is documented on the following document.
 
 [Working with Test Kitchen](/doc/working-with-test-kitchen.md)
+
+## Debugging recipes with Pry
+
+TODO

@@ -1,3 +1,0 @@
-# Debugging Chef recipes
-
-TODO
