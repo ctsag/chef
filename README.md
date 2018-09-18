@@ -45,4 +45,6 @@ Now that we're done with the introductions, here's a compilation of documents to
 
 [Working with Test Kitchen](/doc/working-with-test-kitchen.md)
 
+[Debugging Chef recipes](/doc/debugging-chef-recipes.md)
+
 [A test driven day at work with Chef](/doc/a-test-driven-day-at-work-with-chef.md)
