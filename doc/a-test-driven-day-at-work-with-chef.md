@@ -350,3 +350,7 @@ The exact same tests that were run by Test Kitchen on an ad-hoc virtual machine 
 ## The full test suite
 
 TODO
+
+## Further reading
+
+[Chef Webinar : Test-driven cookbook development](https://www.youtube.com/watch?v=qx2l4EELuGY)
