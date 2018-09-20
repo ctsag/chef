@@ -24,11 +24,13 @@ directories.each do |dir|
   end
 end
 
+# TODO replace with a custom resource or a firewall resource
 # Open up the http port
 execute 'firewall_http' do
   command 'firewall-cmd --add-port=80/tcp --permanent'
 end
 
+# TODO replace with a custom resource or a firewall resource
 # Open up the https port
 execute 'firewall_https' do
   command 'firewall-cmd --add-port=443/tcp --permanent'
