@@ -347,6 +347,14 @@ inspec exec test/integration/httpd/httpd_test.rb -t 'ssh://root@192.168.1.60'
 
 The exact same tests that were run by Test Kitchen on an ad-hoc virtual machine when we were developing our recipe are now run on the actual node.
 
+One option that is more suitable for standalone, ad-hoc InSpec manual tests than automated integration tests via Kitchen CI, is to execute an Inspec profile directly from Chef Supermarket, like this.
+
+```bash
+inspec supermarket exec dev-sec/nginx-baseline -t 'ssh://root@192.168.1.60'
+```
+
+This allows you to reuse existing tests suites and is an extremely powerful tool for compliance and security purposes.
+
 ## The full test suite
 
 TODO
