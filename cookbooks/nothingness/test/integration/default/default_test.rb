@@ -1,3 +1,5 @@
+# TODO rewrite this as an InSpec profile
+
 # Export node attributes
 require 'json'
 node = json('/run/chef_node.json')
