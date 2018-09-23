@@ -1,3 +1,4 @@
+#TODO decide whether the following include_recipe is a good idea
 # Include the default recipe
 include_recipe 'nothingness::default'
 

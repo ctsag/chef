@@ -1,3 +1,4 @@
+#TODO decide whether the following include_recipe is a good idea
 # Include the users recipe
 include_recipe 'nothingness::users'
 
