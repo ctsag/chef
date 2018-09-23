@@ -12,11 +12,11 @@ In terms of the Linode VM, a Linode 1024 plan is good enough.
 
 ### Installing Hyper-V
 
-Hyper-V is an optional component of Microsoft Windows, so all you have to do to install it is to select it from the list of of optional Windows features in the Add/Remove Programs section of Control Panel.
+Hyper-V is an optional component of Microsoft Windows, so all you have to do to install it is to select it from the list of optional Windows features in the `Add/Remove` Programs section of `Control Panel`.
 
 ### Virtual switch
 
-To enable networking, you'll need to create a virtual network switch. This can be done in the Virtual Switch Manager section of the Hyper-V Manager. Make sure it's named appropriately and set to External Network and bridge it to your network adapter. Also, remember to tick the "Allow management operating system to share this network adapter" box.
+To enable networking, you'll need to create a virtual network switch. This can be done in the `Virtual Switch Manager` section of the `Hyper-V Manager`. Make sure it's named appropriately and set to `External Network` and bridge it to your network adapter. Also, remember to tick the `Allow management operating system to share this network adapter` box.
 
 ### Creation wizard : Screen 1
 
@@ -24,7 +24,7 @@ Just press next.
 
 ### Creation wizard : Screen 2
 
-Naming should be along the lines of "0. proudhon [Administration]", "1. decleyre [Development]" and so on and so forth. Tick the "Store the virtual machine in a different location" box and specify an appropriate path.
+Naming should be along the lines of `0. proudhon [Administration]`, `1. decleyre [Development]` and so on and so forth. Tick the `Store the virtual machine in a different location` box and specify an appropriate path.
 
 ### Creation wizard : Screen 3
 
@@ -32,11 +32,11 @@ Select Generation 2.
 
 ### Creation wizard : Screen 4
 
-Make sure "Use Dynamic Memory for this virtual machine" is ticked and select the appropriate RAM size.
+Make sure `Use Dynamic Memory for this virtual machine` is ticked and select the appropriate RAM size.
 
 ### Creation wizard : Screen 5
 
-Here's where you specify the virtual network switch we discuseed earlier on.
+Here's where you specify the virtual network switch we discussed earlier on.
 
 ### Creation wizard : Screen 6
 
@@ -52,7 +52,7 @@ Just press Finish.
 
 ### Post creation wizard configuration
 
-On the VM's Settings dialogue, go to the Security section and untick the "Enable Secure Boot" box. On the Integration Services section, enable everything.
+On the VM's Settings dialogue, go to the `Security` section and untick the `Enable Secure Boot` box. On the `Integration Services` section, enable everything.
 
 ### Enabling nested virtualization
 
@@ -66,11 +66,11 @@ Enabling nested virtualization for Hyper-V can be done via a small script includ
 
 ### Network and host name
 
-Hostname should be set to something along the lines of "proudhon". On the top left corner, switch the network on, then click on Configure. Go to the IPv4 tab, set the Method to Manual and add the IP, mask and gateway. Set the DNS servers to 1.1.1.1,1.0.0.1 and the search domain to something along the lines of "int.nothingness.gr" (don't forget the int part).
+Hostname should be set to something along the lines of `proudhon`. On the top left corner, switch the network on, then click on `Configure`. Go to the `IPv4` tab, set the method to `Manual` and add the IP, mask and gateway. Set the DNS servers to `1.1.1.1,1.0.0.1` and the search domain to something along the lines of `int.nothingness.gr` (don't forget the int part).
 
 ### Installation Destination
 
-Just enter the screen and press Done.
+Just enter the screen and press `Done`.
 
 ### Date and time
 
@@ -78,7 +78,7 @@ Set region and city as appropriate and switch network time on.
 
 ### Keyboard layout
 
-Add any required languages, for example "Greek, Modern (1453-) (Greek)", click on Options and select Alt+Shift as the switch layout keyboard shortcut.
+Add any required languages, for example `Greek, Modern (1453-) (Greek)`, click on `Options` and select `Alt+Shift` as the switch layout keyboard shortcut.
 
 ### KDump
 
