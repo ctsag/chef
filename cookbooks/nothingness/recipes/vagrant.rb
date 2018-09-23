@@ -1,6 +1,3 @@
-# Include the virtualbox recipe
-include_recipe 'nothingness::virtualbox'
-
 # Download and install Vagrant
 remote_file "#{Chef::Config[:file_cache_path]}/#{node['pkg']['vagrant']['name']}.rpm" do
   source node['pkg']['vagrant']['source']
